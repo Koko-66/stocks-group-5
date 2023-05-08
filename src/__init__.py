@@ -6,10 +6,8 @@ def create_app(test_config=None):
     """Create main app entry point"""
     app = Flask(__name__,
                 instance_relative_config=True #specifies that the config files are relative to the instance folder
-        
-                ) 
-    app.debug = True
-    
+        ) 
+
     # load the instance config, if it exists, when not testing
     if test_config is None:
         app.config.from_mapping(
@@ -20,19 +18,8 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    blueprints = ['stocks']
+    blueprints = ['stocks', 'home']
     for bp in blueprints:
         app.register_blueprint(__import__(f'src.{bp}', fromlist=[bp]).__getattribute__(bp))
 
-    # ensure the instance folder exists
-    # db.app = app
-
-    #initialize the database
-    # db.init_app(app)
-
-
-
     return app
-
-
-
