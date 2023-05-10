@@ -1,6 +1,7 @@
 from flask import Flask
 import os
-
+from src.auth import auth
+from src.bookmarks import bookmarks
 
 def create_app(test_config=None):
     """Create main app entry point"""
@@ -17,6 +18,10 @@ def create_app(test_config=None):
     # if test_config is not None, then the app is in test mode
     else:
         app.config.from_mapping(test_config)
+
+    app.register_blueprint(auth)
+    app.register_blueprint(bookmarks)
+
 
     blueprints = ['stocks', 'home']
     for bp in blueprints:
