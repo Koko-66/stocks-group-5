@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{{ url_for('home.index') }}"><img class="logo" src="{{url_for('static', filename='assets/logo.png')}}"></i></a>
+          <a class="navbar-brand" href="{{ url_for('home.index') }}"><img class="logo" src="{{url_for('static', filename='assets/logo.png')}}" alt="logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -32,7 +32,7 @@
                   Dropdown
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('stocks_news.connect_to_api') }}">News</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -49,14 +49,16 @@
           </div>
         </div>
     </nav>
-    <div class="container my-5">
-    {# include('templates/partials/_messages.html') #}
-    {# include('templates/partials/_search.html') #}
-    {# include('templates/partials/_navbar.html') #}
-    {% block content %}{% endblock %}
-    {# include('templates/partials/_footer.html')#}
-    </div>
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mx-0  bg-light  my-4 border-top">
+      <!-- <div class="full-height"> -->
+        <div class="container my-5">
+        {# include('templates/partials/_messages.html') #}
+        {# include('templates/partials/_search.html') #}
+        {# include('templates/partials/_navbar.html') #}
+        {% block content %}{% endblock %}
+        {# include('templates/partials/_footer.html')#}
+        </div>
+      <!-- </div> -->
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mx-0  bg-light border-top">
         <div class="col-md-4 d-flex align-items-center">
           <!-- <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
             <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
@@ -64,11 +66,11 @@
           <span class="mb-md-0 text-body-secondary">© 2023 CFG Group 5</span>
         </div>
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/AbiTC"><img class="contr" src="{{url_for('static', filename='assets/abi.jpeg')}}"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/asya-seag"><img class="contr" src="{{url_for('static', filename='assets/asya.png')}}"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/jessica-8"><img class="contr" src="{{url_for('static', filename='assets/jessica.png')}}"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/mimidoestech"><img class="contr" src="{{url_for('static', filename='assets/miriem.jpeg')}}"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/Koko-66"><img class="contr" src="{{url_for('static', filename='assets/karolina.png')}}"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/AbiTC"><img class="contr" src="{{url_for('static', filename='assets/abi.jpeg')}}" alt="Abigail"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/asya-seag"><img class="contr" src="{{url_for('static', filename='assets/asya.png')}}" alt="Asya"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/jessica-8"><img class="contr" src="{{url_for('static', filename='assets/jessica.png')}}" alt="Jessica"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/mimidoestech"><img class="contr" src="{{url_for('static', filename='assets/miriem.jpeg')}}" alt="Miriem"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/Koko-66"><img class="contr" src="{{url_for('static', filename='assets/karolina.png')}}" alt="Karolina"></a></li>
         </ul>
     </footer>
     <!-- Bootstrap JS -->

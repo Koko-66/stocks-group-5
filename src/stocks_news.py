@@ -5,13 +5,13 @@ import json
 import urllib.parse
 import os
 from flask import Blueprint, render_template
-import yfinance as yf
+# import yfinance as yf
 # import sqlite3
 
 
-stocks = Blueprint('stocks', __name__, url_prefix='/stocks')
+stocks_news = Blueprint('stocks_news', __name__, url_prefix='/stocks/news')
 
-@stocks.route('/', methods=['GET'])
+@stocks_news.route('/', methods=['GET'])
 def connect_to_api():
     """Show all stocks"""
     conn = http.client.HTTPConnection('api.mediastack.com')
@@ -39,6 +39,8 @@ def connect_to_api():
 
     conn.close()
     
+    # add handling same articles from different sources - so that they do not repeat!
     
-    return render_template('stocks.html', news_data=news_data, articles=articles)
+    
+    return render_template('stocks_news.html', news_data=news_data, articles=articles)
 
