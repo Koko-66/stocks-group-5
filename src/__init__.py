@@ -18,7 +18,7 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    blueprints = ['stocks', 'home']
+    blueprints = ['stocks_news', 'home']
     for bp in blueprints:
         app.register_blueprint(__import__(f'src.{bp}', fromlist=[bp]).__getattribute__(bp))
 
