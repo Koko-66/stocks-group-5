@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Index</h1>
-    <p>Index page</p>
+<div class="full-window">
+<div class="d-block bg-light text-center  m-5 p-3">
+    <h1 >Welcome</h1>
+    <p>Welcome to our stocks app</p>
+    <div class="flex-row">
+        <a class="btn btn-dark m-2" href="{#{ url_for('login') }#}">Login</a>
+        <a class="btn btn-outline-dark m-2" href="{#{ url_for('register') }#}">Register</a>
+    </div>
+</div>
+</div>
 {% endblock %}
