@@ -1,55 +1,76 @@
-from flask import Blueprint, request, jsonify
-from werkzeug.security import check_password_hash, generate_password_hash
-import validators
+from flask import Flask, Blueprint, render_template, request, redirect, session, url_for
+import re
 
-from src.constants.http_status_codes import HTTP_400_BAD_REQUEST, HTTP_409_CONFLICT
 #importing database
-from src.database import User
+from src.database import User, db
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 
+#handling login page
+@auth.route('/login', methods=['GET', 'POST'])
+def login():
+    message = ''
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+        email = request.form['email']
+        password = request.form['password']
 
-@auth.post('/register')
+        user = User.query.filter_by(email=email).first()
+        if user and user.password == password:
+            session['loggedin'] = True
+            session['user_id'] = user.id
+            session['username'] = user.username
+            session['email'] = user.email
+            message = 'Logged in successfully!'
+            return render_template('user.html', message=message)
+        else:
+            message = 'Please enter correct email / password!'
+    return render_template('login.html', message=message)
+
+#logout option
+@auth.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('user_id', None)
+    session.pop('email', None)
+    return redirect(url_for('login'))
+
+
+#register
+@auth.route('/register', methods=['GET', 'POST'])
 def register():
-    username = request.json['username']
-    email = request.json['email']
-    password = request.json['password']
+    message = ''
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
 
-    # checks password/username lengths and that username is alphanumeric without spaces
-    if len(password) < 6:
-        return jsonify({'Error': "Your password must have at least 6 characters"}), HTTP_400_BAD_REQUEST
-
-    if len(username) < 3:
-        return jsonify({'Error': "Your username must have at least 3 characters"}), HTTP_400_BAD_REQUEST
-
-    if not username.isalnum() or " " in username:
-        return jsonify(
-            {'Error': "Username should be alphanumeric and should not contain any spaces"}), HTTP_400_BAD_REQUEST
-
-    # checking if email is valid
-    if not validators.email(email):
-        return jsonify({'Error': "Invalid email address"}), HTTP_400_BAD_REQUEST
-
-    #checking if email already exists in database
-    if User.objects.filter_by(email=email).first() is not None:
-        if not validators.email(email):
-            return jsonify({'Error': "Account with this email address already exists"}), HTTP_409_CONFLICT
-
-    # checking if username already exists in database
-    if User.objects.filter_by(username=username).first() is not None:
-        if not validators.email(email):
-            return jsonify({'Error': "This username is already taken"}), HTTP_409_CONFLICT
-    return "Successful registration!"
-
-
-    #hashing
-    pwd_hash=generate_password_hash(password)
-
-    #save new user to our db
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            message = 'Account already exists!'
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            message = 'Invalid email address!'
+        elif not username or not password or not email:
+            message = 'Please fill out the form!'
+        elif len(password) < 6:
+            message= 'Password is too short'
+        elif not username.isalnum() or " " in username:
+            message = 'Username should be alphanumeric and no spaces are allowed'
+        else:
+            try:
+                new_user = User(username=username, email=email, password=password)
+                db.session.add(new_user)
+                db.session.commit()
+                message = 'Successful registration!'
+            except Exception as e:
+                message = 'An error occurred while registering: {}'.format(str(e))
+                db.session.rollback()
+                print('Error: {}'.format(str(e)))
+    elif request.method == 'POST':
+        message = 'Please fill out the form!'
+    return render_template('register.html', message=message)
 
 
 
 
-@auth.get('/me')
-def mer():
-    return {"user": "me"}
+if __name__ == "__main__":
+    app.run()
