@@ -3,20 +3,46 @@
 {% block content %}
 <div>
     <h1>Stocks news</h1>
-    <p>Stocks page</p> 
+    <h2>Select your preferences</h2> 
     {#{ news_data }#}
-
+    <form class="my-2" method="POST" action="{{ url_for('stocks_news.get_news') }}">
+        <div class="d-flex gap-2">
+        <label for="language">Language</label>
+        <select name="language" class="form-select" aria-label="Default select example">
+            {% for code, language in languages.items() %}
+                {% if selected_language == code %}
+                <option value="{{ code }}" selected>{{ language }}</option>
+                {% else %}
+                <option value="{{ code }}">{{ language }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    <!-- </div> -->
+        <!-- <div class="d-grid gap-2"> -->
+            <button class=" btn btn-secondary" type="submit">Get news</button>
+        </div>
+</form>
+{% if news_data %}
+    <div class="alert alert-success" role="alert">
+        News data received
+        Language: {{ language }}
+    </div>
+{% endif %}
+{% if not articles %}
+    <div class="alert alert-warning" role="alert">
+        No news data received
+    </div>
+{% endif %}
 {% for article in articles %}
     <h2>Title: {{ article.title }}</h2>
-    <h3>Author: {{ article.author }}</h3>
-    {% if article.image %}
-    <img class="img-flex article-img" src="{{ article.image }}" alt="{{article.title}}">
+    {% if article.image_url %}
+    <img class="img-flex article-img" src="{{ article.image_url }}" alt="{{article.title}}">
     {% else %}
     <p class="text-secondary">No image available</p>
     {% endif %}
     <h4>Source: {{ article.source }}</h4>
-    <h5>Language: {{ article.language }}</h5>
     <p>Description: {{ article.description}}</p>
+    <h5>{{ article.snippet }}</h5>
     <a href="{{ article.url }}">Read more...</a>
     <br>
 
