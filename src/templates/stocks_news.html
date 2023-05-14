@@ -1,54 +1,65 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block navbar %} {% include 'includes/navbar_auth.html'
+%} {% endblock %} {% block content %}
 <div>
-    <h1>Stocks news</h1>
-    <h2>Select your preferences</h2> 
-    {#{ news_data }#}
-    <form class="my-2" method="POST" action="{{ url_for('stocks_news.get_news') }}">
-        <div class="d-flex gap-2">
-        <label for="language">Language</label>
-        <select name="language" class="form-select" aria-label="Default select example">
-            {% for code, language in languages.items() %}
-                {% if selected_language == code %}
-                <option value="{{ code }}" selected>{{ language }}</option>
-                {% else %}
-                <option value="{{ code }}">{{ language }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-    <!-- </div> -->
-        <!-- <div class="d-grid gap-2"> -->
-            <button class=" btn btn-secondary" type="submit">Get news</button>
-        </div>
-</form>
-{% if news_data %}
-    <div class="alert alert-success" role="alert">
-        News data received
-        Language: {{ language }}
+  <h1>Stocks news</h1>
+  <h2>Select your preferences</h2>
+  {#{ news_data }#}
+  <form
+    class="my-2"
+    method="POST"
+    action="{{ url_for('stocks_news.get_news') }}"
+  >
+    <div class="d-flex gap-2">
+      <label for="language">Language</label>
+      <select
+        name="language"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        {% for code, language in languages.items() %} {% if selected_language ==
+        code %}
+        <option value="{{ code }}" selected>{{ language }}</option>
+        {% else %}
+        <option value="{{ code }}">{{ language }}</option>
+        {% endif %} {% endfor %}
+      </select>
+      <label for="Stocks"></label>
+      <!-- <select
+        name="stocks"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        {% for code, language in languages.items() %} {% if selected_language ==
+        code %}
+        <option value="{{ code }}" selected>{{ language }}</option>
+        {% else %}
+        <option value="{{ code }}">{{ language }}</option>
+        {% endif %} {% endfor %}
+      </select> -->
+      <button class="btn btn-secondary" type="submit">Go</button>
     </div>
-{% endif %}
-{% if not articles %}
-    <div class="alert alert-warning" role="alert">
-        No news data received
-    </div>
-{% endif %}
-{% for article in articles %}
-    <h2>Title: {{ article.title }}</h2>
-    {% if article.image_url %}
-    <img class="img-flex article-img" src="{{ article.image_url }}" alt="{{article.title}}">
-    {% else %}
-    <p class="text-secondary">No image available</p>
-    {% endif %}
-    <h4>Source: {{ article.source }}</h4>
-    <p>Description: {{ article.description}}</p>
-    <h5>{{ article.snippet }}</h5>
-    <a href="{{ article.url }}">Read more...</a>
-    <br>
+  </form>
 
-        <p>{{ article.published_at }}</p>
-    <p>{{ article.content }}</p>
-    <hr>
-    {% endfor %}
+  {% for article in articles %}
+  <h2>Title: {{ article.title }}</h2>
+  {% if article.image_url %}
+  <img
+    class="img-flex article-img"
+    src="{{ article.image_url }}"
+    alt="{{article.title}}"
+  />
+  {% else %}
+  <p class="text-secondary">No image available</p>
+  {% endif %}
+  <h4>Source: {{ article.source }}</h4>
+  <p>Description: {{ article.description}}</p>
+  <h5>{{ article.snippet }}</h5>
+  <a href="{{ article.url }}">Read more...</a>
+  <br />
+
+  <p>{{ article.published_at }}</p>
+  <p>{{ article.content }}</p>
+  <hr />
+  {% endfor %}
 </div>
 {% endblock %}

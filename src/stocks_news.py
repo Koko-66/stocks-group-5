@@ -5,6 +5,7 @@ import json
 import urllib.parse
 import os
 from flask import Blueprint, render_template, request
+
 # import yfinance as yf
 # import sqlite3
 
@@ -16,16 +17,23 @@ def get_news():
     """Get news about stocks"""
     # Define the parameters of the web search.
     # List of available languages: https://mediastack.com/documentation
-    languages = {"ar": "Arabic","de": "German", "en": "English", "es": "Spanish",
-                 "fr": "French", "he": "Hebrew", "it": "Italian", "nl": "Dutch", 
-                 "no": "Norwegian", "pt": "Portuguese", "pl": "Pollish", "ru": "Russian",
-                 "se": "Swedish", "tr": "Turkish", "th": "Thai", "zh": "Chinese"}
+    # languages = {"ar": "Arabic","de": "German", "en": "English", "es": "Spanish",
+    #              "fr": "French", "he": "Hebrew", "it": "Italian", "nl": "Dutch", 
+    #              "no": "Norwegian", "pt": "Portuguese", "pl": "Polish", "ru": "Russian",
+    #              "se": "Swedish", "tr": "Turkish", "th": "Thai", "zh": "Chinese"}
+    
+    # filename = os.path.join('static', 'data', 'resources.json')
+
+    with open('./src/static/data/resources.json') as resources:
+        loaded_data = json.load(resources)
     
     #handle
     if request.method == 'POST':
-        selected_language = request.form.get('language', 'en') #default language to be changed to prefereces language
+        selected_language = request.form.get('language') #default language to be changed to prefereces language
         symbols = request.form.get('symbols', 'GOOG') #default symbols to be changed to prefereces symbols
-
+    else:
+        selected_language = 'multi'
+        symbols = ''
     conn = http.client.HTTPSConnection('api.marketaux.com')
 
     # Define the parameters of the web search.
@@ -57,6 +65,6 @@ def get_news():
     return render_template('stocks_news.html', 
                            news_data=news_data, 
                            articles=articles,
-                           languages=languages,
+                           languages=loaded_data['languages'],
                            selected_language=selected_language)
 

@@ -36,7 +36,8 @@ class Stock(db.Model):
 class Preferences(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    stocks = db.relationship('Stock', backref="notifications")
+    stocks = db.relationship('Stock', secondary=stocks_preferences, lazy='subquery',
+        backref=db.backref('preferences', lazy=True))
     alert_frequency = db.Column(db.String(10), nullable=False)
     news_preference = db.Column(db.String(50), nullable=False)
     news_language = db.Column(db.String(3), nullable=False)
