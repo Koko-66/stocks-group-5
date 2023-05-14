@@ -35,15 +35,14 @@
 {% endif %}
 {% for article in articles %}
     <h2>Title: {{ article.title }}</h2>
-    <h3>Author: {{ article.author }}</h3>
-    {% if article.image %}
-    <img class="img-flex article-img" src="{{ article.image }}" alt="{{article.title}}">
+    {% if article.image_url %}
+    <img class="img-flex article-img" src="{{ article.image_url }}" alt="{{article.title}}">
     {% else %}
     <p class="text-secondary">No image available</p>
     {% endif %}
     <h4>Source: {{ article.source }}</h4>
-    <h5>Language: {{ article.language }}</h5>
     <p>Description: {{ article.description}}</p>
+    <h5>{{ article.snippet }}</h5>
     <a href="{{ article.url }}">Read more...</a>
     <br>
 
