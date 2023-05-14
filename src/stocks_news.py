@@ -21,19 +21,20 @@ def get_news():
     #              "fr": "French", "he": "Hebrew", "it": "Italian", "nl": "Dutch", 
     #              "no": "Norwegian", "pt": "Portuguese", "pl": "Polish", "ru": "Russian",
     #              "se": "Swedish", "tr": "Turkish", "th": "Thai", "zh": "Chinese"}
-    
-    # filename = os.path.join('static', 'data', 'resources.json')
 
-    with open('./src/static/data/resources.json') as resources:
-        loaded_data = json.load(resources)
+    with open('./src/static/data/languages.json') as language_data:
+        language_data = json.load(language_data)
+        
+    with open('./src/static/data/stocks_data.json') as symbol_data:
+        stock_data = json.load(symbol_data)
     
     #handle
     if request.method == 'POST':
         selected_language = request.form.get('language') #default language to be changed to prefereces language
-        symbols = request.form.get('symbols', 'GOOG') #default symbols to be changed to prefereces symbols
+        selected_symbol = request.form.get('stocks') #default symbols to be changed to prefereces symbols
     else:
         selected_language = 'multi'
-        symbols = ''
+        selected_symbol = ''
     conn = http.client.HTTPSConnection('api.marketaux.com')
 
     # Define the parameters of the web search.
@@ -41,7 +42,7 @@ def get_news():
         'api_token': os.environ.get('MARKETAUX_API_KEY'),
         'sort': 'published_desc',
         'language': selected_language,
-        'symbols': symbols,
+        'symbols': selected_symbol,
     })
     conn.request('GET', '/v1/news/all?{}'.format(params))
     res = conn.getresponse()
@@ -65,6 +66,8 @@ def get_news():
     return render_template('stocks_news.html', 
                            news_data=news_data, 
                            articles=articles,
-                           languages=loaded_data['languages'],
-                           selected_language=selected_language)
+                           languages=language_data['languages'],
+                           stocks=stock_data['stocks'],
+                           selected_language=selected_language,
+                           selected_symbol=selected_symbol)
 

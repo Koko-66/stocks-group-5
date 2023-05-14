@@ -24,18 +24,22 @@
         {% endif %} {% endfor %}
       </select>
       <label for="Stocks"></label>
-      <!-- <select
+      <select
         name="stocks"
         class="form-select"
         aria-label="Default select example"
       >
-        {% for code, language in languages.items() %} {% if selected_language ==
-        code %}
-        <option value="{{ code }}" selected>{{ language }}</option>
+        {% for stock in stocks %} 
+        {% set symbol = stock['symbol'] %}
+        {% set name = stock['name'] %}
+        {% if selected_symbol ==
+        symbol %}
+        <option value="{{ symbol }}" selected>{{ symbol }}</option>
         {% else %}
-        <option value="{{ code }}">{{ language }}</option>
-        {% endif %} {% endfor %}
-      </select> -->
+        <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+        {% endif %} 
+        {% endfor %}
+      </select>
       <button class="btn btn-secondary" type="submit">Go</button>
     </div>
   </form>
