@@ -29,7 +29,8 @@ def create_app(test_config=None):
 
     #registering blueprints
 
-    blueprints = ['auth', 'home', 'stocks_news', 'profile']
+    blueprints = ['auth', 'home', 'stocks_news', 'profile', 'stocks_graph']
+    
     for bp in blueprints:
         app.register_blueprint(__import__(f'src.{bp}', fromlist=[bp]).__getattribute__(bp))
 
