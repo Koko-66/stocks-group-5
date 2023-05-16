@@ -5,6 +5,58 @@
 }
 
 body {
+    height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #a88f8f;
+    margin-bottom: 0px;
+    background-color: #dfb539 !important;
+}
+
+nav {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+footer {
+    position: relative;
+    /* bottom: -20px; */
+    bottom: 0;
+    margin-bottom: 0;
+    padding: 0 10px;
+    width: 100%;
+    /* height: 2.5rem; */
+    /* background-color: #152a42; */
+}
+
+.full-height {
+    height: 100%; 
+}
+
+.full-window {
+    height: 100vh; 
+}
+
+.article-img {
+    height: 20vw;
+}
+
+.logo {
+    height: 50px;
+}
+
+
+
+.contr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    margin-top: 10px;
 }
