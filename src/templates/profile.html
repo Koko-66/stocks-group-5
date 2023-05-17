@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% set active_page = "profile" %}
+
 {% block navbar %} {% include 'includes/navbar_auth.html' %} {% endblock %}
 {% block content %}
 <div class="full-window">
@@ -6,9 +8,14 @@
         <h1>Your profile</h1>
         <p></p>
         <div class="">
-            <form method="POST">
-
-            </form>
+            <div class="row">
+                Logged in as: {{ user.username }}<strong>{{session.name}} | <a href="{{ url_for('auth.login') }}"> Logout</a>
+            </div>
+            <br><br>
+            <div class="row">
+        
+                <h2>Welcome to the user profile page...</h2>
+            </div>
         </div>
     </div>
 </div>
