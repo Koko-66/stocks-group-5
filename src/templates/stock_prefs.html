@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block navbar %} {% include 'includes/navbar_auth.html'
+%} {% endblock %} {% block content %}
+
+<div>
+    <h1>Stock Preferences</h1>
+    {#{ stocks }#}
+    <h5>Select your stock options below</h5>
+    <form action="/profile" method="post">
+        <!-- First dropdown -->
+        <div class="form-group">
+        <label for="stocks1">Stock Option 1:</label>
+        <select id="stocks1" name="stocks1" class="form-select" aria-label="Stocks 1">
+          {% for stock in stocks %}
+            {% set symbol = stock['symbol'] %}
+            {% set name = stock['name'] %}
+              <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+          {% endfor %}
+        </select>
+            </div>
+
+
+        <!-- Second dropdown -->
+        <div class="form-group">
+        <label for="stocks2">Stock Option 2:</label>
+        <select id="stocks2" name="stocks2" class="form-select" aria-label="Stocks 2">
+          {% for stock in stocks %}
+            {% set symbol = stock['symbol'] %}
+            {% set name = stock['name'] %}
+              <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+          {% endfor %}
+        </select>
+            </div>
+
+        <div class="form-group">
+        <!-- Third dropdown -->
+        <label for="stocks3">Stock Option 3:</label>
+        <select id="stocks3" name="stocks3" class="form-select" aria-label="Stocks 3">
+          {% for stock in stocks %}
+            {% set symbol = stock['symbol'] %}
+            {% set name = stock['name'] %}
+              <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+          {% endfor %}
+        </select>
+            </div>
+        <input type="submit" value="Submit" class="submit-button">
+    </form>
+</div>
+{% endblock %}

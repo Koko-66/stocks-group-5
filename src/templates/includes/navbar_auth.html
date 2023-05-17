@@ -16,6 +16,9 @@
             <a class="nav-link {{'active' if active_page == 'stock_details'}}" href="#" tabindex="-1">Stock Details</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('stocks_graph.render') }}">Stock Details</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link {{'active' if active_page == 'news'}}" href="{{ url_for('stocks_news.get_news') }}">News</a>
           </li>
         </ul>          
