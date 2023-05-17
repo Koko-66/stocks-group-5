@@ -52,3 +52,12 @@ footer {
     height: 25px;
     border-radius: 50%;
 }
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    margin-top: 10px;
+}
+
