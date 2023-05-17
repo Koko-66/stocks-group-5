@@ -1,0 +1,25 @@
+{ 
+   "languages": {
+        "ar": "Arabic",
+        "de": "German",
+        "en": "English",
+        "es": "Spanish",
+        "fr": "French",
+        "he": "Hebrew",
+        "it": "Italian",
+        "nl": "Dutch",
+        "no": "Norwegian",
+        "pt": "Portuguese",
+        "pl": "Polish",
+        "ru": "Russian",
+        "se": "Swedish",
+        "tr": "Turkish",
+        "th": "Thai",
+        "zh": "Chinese"
+    },
+    "symbols": {
+        "GOOG": "Google",
+        "AMZ": "Amazon",
+        "TESL": "Tesla"
+    }
+}

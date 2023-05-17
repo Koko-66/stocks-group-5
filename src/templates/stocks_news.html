@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block navbar %} {% include 'includes/navbar_auth.html'
+%} {% endblock %} {% block content %}
+<div>
+  <h1>Stocks news</h1>
+  <h2>Select your preferences</h2>
+  {#{ news_data }#}
+  <form
+    class="my-2"
+    method="POST"
+    action="{{ url_for('stocks_news.get_news') }}"
+  >
+    <div class="d-flex gap-2">
+      <label for="language">Language</label>
+      <select
+        name="language"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        {% for code, language in languages.items() %} {% if selected_language ==
+        code %}
+        <option value="{{ code }}" selected>{{ language }}</option>
+        {% else %}
+        <option value="{{ code }}">{{ language }}</option>
+        {% endif %} {% endfor %}
+      </select>
+      <label for="Stocks"></label>
+      <select
+        name="stocks"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        {% for stock in stocks %} 
+        {% set symbol = stock['symbol'] %}
+        {% set name = stock['name'] %}
+        {% if selected_symbol ==
+        symbol %}
+        <option value="{{ symbol }}" selected>{{ symbol }}</option>
+        {% else %}
+        <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+        {% endif %} 
+        {% endfor %}
+      </select>
+      <button class="btn btn-secondary" type="submit">Go</button>
+    </div>
+  </form>
+
+  {% for article in articles %}
+  <h2>Title: {{ article.title }}</h2>
+  {% if article.image_url %}
+  <img
+    class="img-flex article-img"
+    src="{{ article.image_url }}"
+    alt="{{article.title}}"
+  />
+  {% else %}
+  <p class="text-secondary">No image available</p>
+  {% endif %}
+  <h4>Source: {{ article.source }}</h4>
+  <p>Description: {{ article.description}}</p>
+  <h5>{{ article.snippet }}</h5>
+  <a href="{{ article.url }}">Read more...</a>
+  <br />
+
+  <p>{{ article.published_at }}</p>
+  <p>{{ article.content }}</p>
+  <hr />
+  {% endfor %}
+</div>
+{% endblock %}
