@@ -3,20 +3,31 @@
 
 {% block navbar %} {% include 'includes/navbar_auth.html' %} {% endblock %}
 {% block content %}
-<div class="full-window">
-    <div class="d-block bg-light text-center  m-5 p-3">
+<div class="bg-light rounded-3">
+    <div class="d-block text-center m-5 p-3">
+        <div>
         <h1>Your profile</h1>
-        <p></p>
-        <div class="">
-            <div class="row">
-                Logged in as: {{ user.username }}<strong>{{session.name}} | <a href="{{ url_for('auth.login') }}"> Logout</a>
-            </div>
-            <br><br>
-            <div class="row">
-        
-                <h2>Welcome to the user profile page...</h2>
-            </div>
+        <div class="row">
+            Logged in as: {{ username }}<strong> | <a href="{{ url_for('auth.login') }}"> Logout</a>
+        </div>
+        <br><br>
+        <div class="row">
+            <h2>Welcome to the user profile page...</h2>
         </div>
     </div>
+    </div>
+        <div class="d-flex text-align-left m-2 p-3">
+            <div class=""><h6>Your preferred language</h6>
+                <p>{% if language %}
+                    {{ language }}
+                    {% else %}
+                    {{ message }}
+                    {% endif %}</p>
+            </div>
+
+            <div class="col"> </div>
+        </div>
 </div>
 {% endblock %}
+
+<!-- Image by <a href="https://pixabay.com/users/publicdomainpictures-14/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">PublicDomainPictures</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">Pixabay</a> -->

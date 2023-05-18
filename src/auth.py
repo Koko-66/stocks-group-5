@@ -21,7 +21,7 @@ def login():
             session['username'] = user.username
             session['email'] = user.email
             message = 'Logged in successfully!'
-            return render_template('user.html', message=message)
+            return redirect(f'../profile/{user.username}')
         else:
             message = 'Please enter correct email / password!'
     return render_template('login.html', message=message)
@@ -39,6 +39,7 @@ def logout():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     message = ''
+    user = ModuleNotFoundError
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         username = request.form['username']
         email = request.form['email']
@@ -67,10 +68,10 @@ def register():
                 print('Error: {}'.format(str(e)))
     elif request.method == 'POST':
         message = 'Please fill out the form!'
-    return render_template('register.html', message=message)
+    return render_template('register.html', message=message, user=user)
 
 
 
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()

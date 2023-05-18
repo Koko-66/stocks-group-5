@@ -15,6 +15,11 @@ nav {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+canvas {
+    background-color: rgb(248, 249, 250);
+    width: auto; 
+    height: 300px; 
+}
 
 .footer {
     position: fixed;

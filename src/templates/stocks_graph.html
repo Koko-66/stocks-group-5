@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block navbar %} {% include 'includes/navbar_auth.html' %} {% endblock %}
 {% block content %}
-<div class="full-window">
+<!-- <div class="full-window"> -->
   <div class="d-block bg-light text-center  m-10 p-3">
     <h1>Stock details</h1>
   </div>
@@ -18,11 +18,11 @@
     </form>
 
   </div>
-  <div style="float: right;">
-    <canvas id="myChart" width="1200" height="400"></canvas>
+  <div>
+    <canvas id="myChart" width="auto" height="auto" class="p-3"></canvas>
   </div>
 </div>
-</div>
+<!-- </div> -->
 <script type="text/javascript">
   var dates = JSON.parse('{{ dates|safe }}');
   var prices = JSON.parse('{{ prices|safe }}');
