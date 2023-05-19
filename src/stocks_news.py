@@ -5,9 +5,10 @@ import urllib.parse
 import os
 from flask import Blueprint, render_template, request, session
 from src.database import db, User, Preferences
+from src.utils import load_languages, load_stocks, get_preferences
 
 # register the stocks_news blueprint
-stocks_news = Blueprint('stocks_news', __name__, url_prefix='/stocks/news')
+stocks_news = Blueprint('stocks_news', __name__, url_prefix='/profile')
 
 
 # @stocks_news.route('/', methods=['GET', 'POST'])
@@ -67,37 +68,28 @@ stocks_news = Blueprint('stocks_news', __name__, url_prefix='/stocks/news')
 #                            selected_symbol=selected_symbol,
 #                            message=message)
 
-@stocks_news.route('/', methods=['GET', 'POST'])
+@stocks_news.route('/<username>/news', methods=['GET', 'POST'])
 def get_news(username):
     """Get news about stocks"""
-    username = session['usrname']
-    
     # load data form json files
-    with open('./src/static/data/languages.json') as language_data:
-        language_data = json.load(language_data)
+    language_data = load_languages()
+    stock_data = load_stocks()
 
-    with open('./src/static/data/stocks_data.json') as symbol_data:
-        stock_data = json.load(symbol_data)
-    
     user = User.query.filter_by(id=session["user_id"]).first()
-    preferences = Preferences.query.filter_by(user_id=user.id).first()
-                                
-    # handle post request
-    if request.method == 'POST':
+    preferences = get_preferences(user)
+    preferred_stocks = preferences.stocks
+    if request.method == "GET":
+        if preferences.news_language:
+            selected_language = preferences.news_language
+        else:
+            selected_language = 'en'
+
+        if preferences.stocks:
+            # selected_symbol = 'TSLA'
+            selected_symbol = preferences.stocks[0].symbol
+    else:
         selected_language = request.form.get('language')
         selected_symbol = request.form.get('stocks')
-        
-    
-        preferences = Preferences(user_id=user.id,
-                                  news_language=selected_language)
-        db.session.add(preferences)
-        db.session.commit()
-        
-    else:
-        # if langugage set in the user preferences, then use it       
-        selected_language = 'en'
-        # if symbols set in the user preferences, then use it
-        selected_symbol = ''
 
     # Create a connection for the HTTP request.
     conn = http.client.HTTPSConnection('api.marketaux.com')
@@ -132,6 +124,7 @@ def get_news(username):
                            articles=articles,
                            languages=language_data['languages'],
                            stocks=stock_data['stocks'],
+                           preferred_stocks=preferred_stocks,
                            username=username,
                            preferences=preferences,
                            selected_language=selected_language,

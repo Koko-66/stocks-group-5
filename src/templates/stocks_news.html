@@ -13,7 +13,7 @@
 	<hr>
 	<!-- <h2>Select your preferences</h2> -->
 	<!-- {#{ news_data }#} -->
-	<form class="my-2" method="POST" action="{{ url_for('profile.get_news', username=username) }}">
+	<form class="my-2" method="POST">
 		<div class="d-flex gap-2">
 			
 			<!-- <label for="language">Language</label> -->
@@ -27,7 +27,9 @@
 			</select>
 			<label for="Stocks"></label>
 			<select name="stocks" class="form-select" aria-label="Default select example">
-				{% for stock in stocks %} {% set symbol = stock['symbol'] %} {% set name
+				{% for stock in preferences.stocks %}
+				{#% for stock in stocks %#} 
+				{% set symbol = stock['symbol'] %} {% set name
 				= stock['name'] %} {% if selected_symbol == symbol %}
 				<option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
 				{% else %}
@@ -38,8 +40,7 @@
 		</div>
 	</form>
 	<hr>
-	{% if username %}<p> this is the template with the username {{ username }} </p>{% endif %}
-	{% if articles != [] %} 
+	{% if articles != [] %} 	
 		{% for article in articles %}
 			<h3>{{ article.title }}</h3>
 			{% if article.image_url %}

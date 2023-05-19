@@ -69,6 +69,7 @@ canvas {
 
 .submit-button {
     margin-top: 10px;
+    
 }
 
 .back-ground-image {
@@ -81,5 +82,10 @@ canvas {
 
 .stock-graph-select {
     text-align: left;
+}
 
+.link-button {
+    text-decoration: none;
+    font-weight: bold;
+    color:rgb(232, 148, 12)
 }

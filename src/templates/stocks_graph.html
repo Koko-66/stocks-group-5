@@ -7,13 +7,17 @@
   <div class="stock-graph-select">
     <form action="/stocks_graph/">
       <p>Please select your stock:</p>
-      <input type="radio" id="stock1" name="stock" value="TSLA">
+      {% for stock in preferences.stocks %}
+      <input type="radio" id="stock{{stock.id}}" name="stock" value="{{stock.symbol}}">
+      <label for="stock1">{{ stock.symbol }}</label><br>
+      {% endfor %}
+      <!-- <input type="radio" id="stock1" name="stock" value="TSLA">
       <label for="stock1">Tesla</label><br>
       <input type="radio" id="stock2" name="stock" value="AMZN">
       <label for="stock2">Amazon</label><br>
       <input type="radio" id="stock3" name="stock" value="GOOG">
       <label for="stock3">Google</label><br><br>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit"> -->
     </form>
 
   </div>
