@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, render_template, request, redirect, session,
 import re
 
 #importing database
-from src.database import User, db
+from src.database import User, Preferences, db
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -62,12 +62,16 @@ def register():
                 db.session.add(new_user)
                 db.session.commit()
                 message = 'Successful registration!'
+                new_user_preferences = Preferences(user_id=new_user.id, news_language='en')
+                db.session.add(new_user_preferences)
+                db.session.commit()
             except Exception as e:
                 message = 'An error occurred while registering: {}'.format(str(e))
                 db.session.rollback()
                 print('Error: {}'.format(str(e)))
     elif request.method == 'POST':
         message = 'Please fill out the form!'
+
     return render_template('register.html', message=message, user=user)
 
 
