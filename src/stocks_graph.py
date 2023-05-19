@@ -1,11 +1,11 @@
 """Routes for the stocks graph page."""
 import json
-import pandas as pd
+from datetime import date, timedelta
+# import pandas as pd
 import yfinance as yf
 from flask import Blueprint, request, render_template,session
-from datetime import date, timedelta
 from src.database import User, Preferences
-# import sqlite3
+from src.utils import get_preferences
 
 
 stocks_graph = Blueprint('stocks_graph', __name__, url_prefix='/stocks_graph')
@@ -15,7 +15,10 @@ stocks_graph = Blueprint('stocks_graph', __name__, url_prefix='/stocks_graph')
 def render():
     
     user = User.query.filter_by(id=session["user_id"]).first()
-    default = 'TSLA'
+    preferences = get_preferences(user)
+    
+    default = "TSLA"
+    preferred_stocks = preferences.stocks
     if request.args.get('stock') == None:
         dates, prices=closing_price(default)
         stock=default
@@ -28,6 +31,8 @@ def render():
     prices_json = json.dumps(prices)
 
     return render_template('stocks_graph.html',
+                           preferences=preferences,
+                           preferred_stocks=preferred_stocks,
                            dates=dates_json,
                            prices=prices_json,
                            stock=stock,
