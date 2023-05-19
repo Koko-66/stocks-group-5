@@ -7,6 +7,7 @@ window.onload = function () {
             data: prices,
             fill: true,
             borderColor: 'rgb(223, 235, 227)',
+            // borderColor: 'rgb(86 114 143)',
             tension: 0.1
         }]
     }

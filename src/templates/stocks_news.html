@@ -8,13 +8,14 @@
 
 <!-- main content -->
 {% block content %}
-<div class="bg-body-tertiary w-100 p-4 rounded-3">
+<div class="bg-light w-100 p-4 rounded-3">
 	<h1>News</h1>
 	<hr>
 	<!-- <h2>Select your preferences</h2> -->
 	<!-- {#{ news_data }#} -->
-	<form class="my-2" method="POST" action="{{ url_for('stocks_news.get_news') }}">
+	<form class="my-2" method="POST" action="{{ url_for('profile.get_news', username=username) }}">
 		<div class="d-flex gap-2">
+			
 			<!-- <label for="language">Language</label> -->
 			<select name="language" class="form-select" aria-label="Default select example">
 				{% for code, language in languages.items() %} {% if selected_language ==
@@ -37,6 +38,7 @@
 		</div>
 	</form>
 	<hr>
+	{% if username %}<p> this is the template with the username {{ username }} </p>{% endif %}
 	{% if articles != [] %} 
 		{% for article in articles %}
 			<h3>{{ article.title }}</h3>
