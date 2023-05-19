@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block navbar %} {% include 'includes/navbar_auth.html' %} {% endblock %}
+{% block content %}
+<div class="full-window">
+  <div class="d-block bg-light text-center  m-10 p-3">
+    <h1>Telegram Notifications</h1>
+      <p>
+        To join the telegram alerts channel click here:
+        <a href="https://t.me/+_yOkDLxFc-o3MDJk">Join Telegram Group Link</a>.
+      </p>
+
+  </div>
+  <div class="" style="float: left;">
+    <form action="/stocks_graph/">
+      <p>Please select your stock:</p>
+      <input type="radio" id="stock1" name="stock" value="TSLA">
+      <label for="stock1">Tesla</label><br>
+      <input type="radio" id="stock2" name="stock" value="AMZN">
+      <label for="stock2">Amazon</label><br>
+      <input type="radio" id="stock3" name="stock" value="GOOG">
+      <label for="stock3">Google</label><br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <a href=”/add_notification”><input type="button" value=Start-Notifications></a>
+
+  </div>
+</div>
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--  var dates = JSON.parse('{{ dates|safe }}');-->
+<!--  var prices = JSON.parse('{{ prices|safe }}');-->
+<!--  var stock = '{{ stock }}'-->
+<!--</script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='js/graphs.js') }}"></script>-->
+
+
+{% endblock %}
