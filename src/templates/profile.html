@@ -3,20 +3,72 @@
 
 {% block navbar %} {% include 'includes/navbar_auth.html' %} {% endblock %}
 {% block content %}
-<div class="full-window">
-    <div class="d-block bg-light text-center  m-5 p-3">
+<div class="bg-light rounded-3">
+    <div class="d-block text-center m-5 p-3">
+        <div>
         <h1>Your profile</h1>
-        <p></p>
-        <div class="">
-            <div class="row">
-                Logged in as: {{ user.username }}<strong>{{session.name}} | <a href="{{ url_for('auth.login') }}"> Logout</a>
-            </div>
-            <br><br>
-            <div class="row">
-        
-                <h2>Welcome to the user profile page...</h2>
-            </div>
+        <div class="row">
+            Logged in as: {{ user.username }}<strong> | <a href="{{ url_for('auth.login') }}"> Logout</a>
+        </div>
+        <br><br>
+        <div class="row">
+            <h2>Welcome to the user profile page...</h2>
         </div>
     </div>
+    </div>
+        <div class="d-flex text-align-left m-2 p-3">
+            <form class="my-2" method="POST" action="{{ url_for('profile.get_news', username=username) }}">
+                <div class="row gap-2">
+                <div class="col">
+                    <label for="Stocks">Your stocks</label>
+                    <select name="stocks" class="form-select" aria-label="Default select example">
+                        {% for stock in stocks %} {% set symbol = stock['symbol'] %} {% set name
+                        = stock['name'] %} {% if selected_symbol == symbol %}
+                        <option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
+                        {% else %}
+                        <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+                        {% endif %} {% endfor %}
+                    </select>
+                    <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary m-2" type="submit">Add</button></div>
+                    <div>Your stocks</div>
+                    <hr>
+                    <ul>
+                    {#% for stock in preferred_stocks %#}
+                        <li>Google</li>
+                        <li>Tesla</li>
+                        <li>{{ stock }}</li>
+                    
+                    {#% endfor %#}
+                    </ul>
+                </div>
+                <div class="col"> 
+                    <label for="language">Your preferred language</label>
+                    <select name="language" class="form-select" aria-label="Default select example">
+                        {% for code, language in languages.items() %} {% if preferred_language ==
+                        code %}
+                        <option value="{{ code }}" selected>{{ language }}</option>
+                        {% else %}
+                        <option value="{{ code }}">{{ language }}</option>
+                        {% endif %} {% endfor %}
+                    </select>
+                    <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary m-2" type="submit">Update</button></div>
+                </div>
+                <!-- <div class="align-content-end"><button class="btn btn-secondary" type="submit">Go</button></div> -->
+                    
+            </form>
+            <!-- <div class=""><h6>Your preferred language</h6>
+                <p>{% if language %}
+                    {{ language }}
+                    {% else %}
+                    {{ message }}
+                    {% endif %}</p> -->
+            </div>
+
+            <div class="col"> </div>
+        </div>
 </div>
 {% endblock %}
+
+<!-- Image by <a href="https://pixabay.com/users/publicdomainpictures-14/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">PublicDomainPictures</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">Pixabay</a> -->
