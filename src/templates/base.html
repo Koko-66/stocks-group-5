@@ -14,15 +14,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 </head>
-<body>
-{% block navbar %} {% include 'includes/navbar.html' %} {% endblock %}  <!-- <div class="full-height"> -->
-        <div class="container my-5">
+<body class="overlay main-image"> 
+{% block navbar %} {% include 'includes/navbar.html' %} {% endblock %} 
+  <!-- <div class="overlay"> -->
+      <div class="m-5">
         {# include('templates/partials/_messages.html') #}
         {# include('templates/partials/_search.html') #}
 
         {% block content %}{% endblock %}
         {# include('templates/partials/_footer.html')#}
         </div>
+      <!-- </div> -->
       <!-- </div> -->
     <footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 mx-0  bg-light border-top">
         <div class="col-md-4 d-flex align-items-center">
@@ -32,11 +34,11 @@
           <span class="mb-md-0 text-body-secondary">© 2023 CFG Group 5</span>
         </div>
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/AbiTC"><img class="contr" src="{{url_for('static', filename='assets/abi.jpeg')}}" alt="Abigail"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/asya-seag"><img class="contr" src="{{url_for('static', filename='assets/asya.png')}}" alt="Asya"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/jessica-8"><img class="contr" src="{{url_for('static', filename='assets/jessica.png')}}" alt="Jessica"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/mimidoestech"><img class="contr" src="{{url_for('static', filename='assets/miriem.jpeg')}}" alt="Miriem"></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/Koko-66"><img class="contr" src="{{url_for('static', filename='assets/karolina.png')}}" alt="Karolina"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/AbiTC"><img class="contributor-img" src="{{url_for('static', filename='assets/abi.jpeg')}}" alt="Abigail"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/asya-seag"><img class="contributor-img" src="{{url_for('static', filename='assets/asya.png')}}" alt="Asya"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/jessica-8"><img class="contributor-img" src="{{url_for('static', filename='assets/jessica.png')}}" alt="Jessica"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/mimidoestech"><img class="contributor-img" src="{{url_for('static', filename='assets/miriem.jpeg')}}" alt="Miriem"></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://github.com/Koko-66"><img class="contributor-img" src="{{url_for('static', filename='assets/karolina.png')}}" alt="Karolina"></a></li>
         </ul>
     </footer>
     <!-- Bootstrap JS -->

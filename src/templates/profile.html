@@ -8,7 +8,7 @@
         <div>
         <h1>Your profile</h1>
         <div class="row">
-            Logged in as: {{ username }}<strong> | <a href="{{ url_for('auth.login') }}"> Logout</a>
+            Logged in as: {{ user.username }}<strong> | <a href="{{ url_for('auth.login') }}"> Logout</a>
         </div>
         <br><br>
         <div class="row">
@@ -17,12 +17,53 @@
     </div>
     </div>
         <div class="d-flex text-align-left m-2 p-3">
-            <div class=""><h6>Your preferred language</h6>
+            <form class="my-2" method="POST" action="{{ url_for('profile.get_news', username=username) }}">
+                <div class="row gap-2">
+                <div class="col">
+                    <label for="Stocks">Your stocks</label>
+                    <select name="stocks" class="form-select" aria-label="Default select example">
+                        {% for stock in stocks %} {% set symbol = stock['symbol'] %} {% set name
+                        = stock['name'] %} {% if selected_symbol == symbol %}
+                        <option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
+                        {% else %}
+                        <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+                        {% endif %} {% endfor %}
+                    </select>
+                    <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary m-2" type="submit">Add</button></div>
+                    <div>Your stocks</div>
+                    <hr>
+                    <ul>
+                    {#% for stock in preferred_stocks %#}
+                        <li>Google</li>
+                        <li>Tesla</li>
+                        <li>{{ stock }}</li>
+                    
+                    {#% endfor %#}
+                    </ul>
+                </div>
+                <div class="col"> 
+                    <label for="language">Your preferred language</label>
+                    <select name="language" class="form-select" aria-label="Default select example">
+                        {% for code, language in languages.items() %} {% if preferred_language ==
+                        code %}
+                        <option value="{{ code }}" selected>{{ language }}</option>
+                        {% else %}
+                        <option value="{{ code }}">{{ language }}</option>
+                        {% endif %} {% endfor %}
+                    </select>
+                    <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary m-2" type="submit">Update</button></div>
+                </div>
+                <!-- <div class="align-content-end"><button class="btn btn-secondary" type="submit">Go</button></div> -->
+                    
+            </form>
+            <!-- <div class=""><h6>Your preferred language</h6>
                 <p>{% if language %}
                     {{ language }}
                     {% else %}
                     {{ message }}
-                    {% endif %}</p>
+                    {% endif %}</p> -->
             </div>
 
             <div class="col"> </div>

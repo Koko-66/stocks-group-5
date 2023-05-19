@@ -17,26 +17,39 @@ profile = Blueprint('profile', __name__, url_prefix='/profile')
 @profile.route('/<username>', methods=['GET', 'POST'])
 def manage_profile(username):
     """Show all stocks"""
+    message = ''
+    preferred_language = ''
+    preferred_stocks = []
     # get current user from the database
     user = User.query.filter_by(username=username).first()
     # get user preferences from the database
     preferences = Preferences.query.filter_by(user_id=user.id).first()
     # load language data
     with open('./src/static/data/languages.json') as language_data:
-            language_data = json.load(language_data)
-    message = ''
+        language_data = json.load(language_data)
+    # load symbol data
+    with open('./src/static/data/stocks_data.json') as symbol_data:
+        stock_data = json.load(symbol_data)
+    
     if preferences:
         language_code = preferences.news_language
-        language = language_data['languages'][language_code]
+        preferred_language = language_data['languages'][language_code]
     else:
         message = 'No preferences yet'
 
+    if request.method == 'POST':
+        preferred_stock = request.form.get('symbol')
+        preferred_language = request.form.get('language')
+        if preferred_stock:
+            preferred_stock = Preferences
 
-    return render_template('profile.html', username=username,
+    return render_template('profile.html',
                            user=user,
                            preferences=preferences,
-                           language=language,
-                           message=message
+                           languages=language_data['languages'],
+                           preferred_language = preferred_language,
+                           message=message,
+                           stocks=stock_data['stocks']
                            )
 
 
@@ -57,12 +70,14 @@ def get_news(username):
     if request.method == 'POST':
         selected_language = request.form.get('language')
         selected_symbol = request.form.get('stocks')
+        
     
         preferences = Preferences(user_id=user.id,
                                   news_language=selected_language)
         db.session.add(preferences)
         db.session.commit()
-        
+    
+    # get request
     else:
         # if langugage set in the user preferences, then use it       
         selected_language = 'en'
