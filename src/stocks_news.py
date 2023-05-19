@@ -74,21 +74,20 @@ def get_news(username):
     # load data form json files
     language_data = load_languages()
     stock_data = load_stocks()
-    
+
     user = User.query.filter_by(id=session["user_id"]).first()
     preferences = get_preferences(user)
-    
+    preferred_stocks = preferences.stocks
     if request.method == "GET":
-        if preferences.news_language:  
+        if preferences.news_language:
             selected_language = preferences.news_language
-            # if symbols set in the user preferences, then use it
         else:
             selected_language = 'en'
-        
+
         if preferences.stocks:
-            selected_symbol = preferences.stocks[1]
+            # selected_symbol = 'TSLA'
+            selected_symbol = preferences.stocks[0].symbol
     else:
-    # if request.method == 'POST':
         selected_language = request.form.get('language')
         selected_symbol = request.form.get('stocks')
 
@@ -125,6 +124,7 @@ def get_news(username):
                            articles=articles,
                            languages=language_data['languages'],
                            stocks=stock_data['stocks'],
+                           preferred_stocks=preferred_stocks,
                            username=username,
                            preferences=preferences,
                            selected_language=selected_language,

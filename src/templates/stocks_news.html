@@ -40,8 +40,7 @@
 		</div>
 	</form>
 	<hr>
-	{% if username %}<p> this is the template with the username {{ username }} </p>{% endif %}
-	{% if articles != [] %} 
+	{% if articles != [] %} 	
 		{% for article in articles %}
 			<h3>{{ article.title }}</h3>
 			{% if article.image_url %}
