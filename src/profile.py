@@ -8,3 +8,4 @@ profile = Blueprint('profile', __name__, url_prefix='/profile')
 def manage_profile():
     """Show all stocks"""
     return render_template('profile.html')
+

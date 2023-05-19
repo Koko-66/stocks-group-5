@@ -9,6 +9,7 @@ from datetime import date, timedelta
 
 stocks_graph = Blueprint('stocks_graph', __name__, url_prefix='/stocks_graph')
 
+
 @stocks_graph.route('/', methods=['GET'])
 def render():
     default = 'TSLA'
