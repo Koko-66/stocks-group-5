@@ -1,0 +1,769 @@
+{
+    "stocks": [
+        {
+            "name": "American Airlines Group Inc. Common Stock",
+            "symbol": "AAL",
+            "industry": "Air Freight/Delivery Services"
+        },
+        {
+            "name": "Apple Inc. Common Stock",
+            "symbol": "AAPL",
+            "industry": "Computer Manufacturing"
+        },
+        {
+            "name": "Arch Capital Group Ltd. Common Stock",
+            "symbol": "ACGL",
+            "industry": "Property-Casualty Insurers"
+        },
+        {
+            "name": "Adobe Inc. Common Stock",
+            "symbol": "ADBE",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Analog Devices Inc. Common Stock",
+            "symbol": "ADI",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Automatic Data Processing Inc. Common Stock",
+            "symbol": "ADP",
+            "industry": "Business Services"
+        },
+        {
+            "name": "Autodesk Inc. Common Stock",
+            "symbol": "ADSK",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "American Electric Power Company Inc. Common Stock",
+            "symbol": "AEP",
+            "industry": "Electric Utilities: Central"
+        },
+        {
+            "name": "Akamai Technologies Inc. Common Stock",
+            "symbol": "AKAM",
+            "industry": "Business Services"
+        },
+        {
+            "name": "Align Technology Inc. Common Stock",
+            "symbol": "ALGN",
+            "industry": "Industrial Specialties"
+        },
+        {
+            "name": "Applied Materials Inc. Common Stock",
+            "symbol": "AMAT",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Advanced Micro Devices Inc. Common Stock",
+            "symbol": "AMD",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Amgen Inc. Common Stock",
+            "symbol": "AMGN",
+            "industry": "Biotechnology: Biological Products (No Diagnostic Substances)"
+        },
+        {
+            "name": "Amazon.com Inc. Common Stock",
+            "symbol": "AMZN",
+            "industry": "Catalog/Specialty Distribution"
+        },
+        {
+            "name": "ANSYS Inc. Common Stock",
+            "symbol": "ANSS",
+            "industry": ""
+        },
+        {
+            "name": "APA Corporation Common Stock",
+            "symbol": "APA",
+            "industry": "Oil & Gas Production"
+        },
+        {
+            "name": "Activision Blizzard Inc. Common Stock",
+            "symbol": "ATVI",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Broadcom Inc. Common Stock",
+            "symbol": "AVGO",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Axon Enterprise Inc. Common Stock",
+            "symbol": "AXON",
+            "industry": "Ordnance And Accessories"
+        },
+        {
+            "name": "Biogen Inc. Common Stock",
+            "symbol": "BIIB",
+            "industry": "Biotechnology: Biological Products (No Diagnostic Substances)"
+        },
+        {
+            "name": "Booking Holdings Inc. Common Stock",
+            "symbol": "BKNG",
+            "industry": "Transportation Services"
+        },
+        {
+            "name": "Baker Hughes Company Class A Common Stock",
+            "symbol": "BKR",
+            "industry": "Metal Fabrications"
+        },
+        {
+            "name": "Cadence Design Systems Inc. Common Stock",
+            "symbol": "CDNS",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "CDW Corporation Common Stock",
+            "symbol": "CDW",
+            "industry": "Catalog/Specialty Distribution"
+        },
+        {
+            "name": "Constellation Energy Corporation Common Stock ",
+            "symbol": "CEG",
+            "industry": "Power Generation"
+        },
+        {
+            "name": "C.H. Robinson Worldwide Inc. Common Stock",
+            "symbol": "CHRW",
+            "industry": "Oil Refining/Marketing"
+        },
+        {
+            "name": "Charter Communications Inc. Class A Common Stock New",
+            "symbol": "CHTR",
+            "industry": "Cable & Other Pay Television Services"
+        },
+        {
+            "name": "Cincinnati Financial Corporation Common Stock",
+            "symbol": "CINF",
+            "industry": "Property-Casualty Insurers"
+        },
+        {
+            "name": "Comcast Corporation Class A Common Stock",
+            "symbol": "CMCSA",
+            "industry": "Cable & Other Pay Television Services"
+        },
+        {
+            "name": "CME Group Inc. Class A Common Stock",
+            "symbol": "CME",
+            "industry": "Investment Bankers/Brokers/Service"
+        },
+        {
+            "name": "Costco Wholesale Corporation Common Stock",
+            "symbol": "COST",
+            "industry": "Department/Specialty Retail Stores"
+        },
+        {
+            "name": "Copart Inc. (DE) Common Stock",
+            "symbol": "CPRT",
+            "industry": "Retail-Auto Dealers and Gas Stations"
+        },
+        {
+            "name": "Cisco Systems Inc. Common Stock (DE)",
+            "symbol": "CSCO",
+            "industry": "Computer Communications Equipment"
+        },
+        {
+            "name": "CoStar Group Inc. Common Stock",
+            "symbol": "CSGP",
+            "industry": "Real Estate"
+        },
+        {
+            "name": "CSX Corporation Common Stock",
+            "symbol": "CSX",
+            "industry": "Railroads"
+        },
+        {
+            "name": "Cintas Corporation Common Stock",
+            "symbol": "CTAS",
+            "industry": "Apparel"
+        },
+        {
+            "name": "Cognizant Technology Solutions Corporation Class A Common Stock",
+            "symbol": "CTSH",
+            "industry": "EDP Services"
+        },
+        {
+            "name": "Caesars Entertainment Inc. Common Stock",
+            "symbol": "CZR",
+            "industry": "Hotels/Resorts"
+        },
+        {
+            "name": "DISH Network Corporation Class A Common Stock",
+            "symbol": "DISH",
+            "industry": "Cable & Other Pay Television Services"
+        },
+        {
+            "name": "Dollar Tree Inc. Common Stock",
+            "symbol": "DLTR",
+            "industry": "Department/Specialty Retail Stores"
+        },
+        {
+            "name": "DexCom Inc. Common Stock",
+            "symbol": "DXCM",
+            "industry": "Medical/Dental Instruments"
+        },
+        {
+            "name": "Electronic Arts Inc. Common Stock",
+            "symbol": "EA",
+            "industry": "Recreational Games/Products/Toys"
+        },
+        {
+            "name": "eBay Inc. Common Stock",
+            "symbol": "EBAY",
+            "industry": "Business Services"
+        },
+        {
+            "name": "Enphase Energy Inc. Common Stock",
+            "symbol": "ENPH",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Equinix Inc. Common Stock REIT",
+            "symbol": "EQIX",
+            "industry": "Real Estate Investment Trusts"
+        },
+        {
+            "name": "Etsy Inc. Common Stock",
+            "symbol": "ETSY",
+            "industry": "Business Services"
+        },
+        {
+            "name": "Evergy Inc. Common Stock",
+            "symbol": "EVRG",
+            "industry": "Power Generation"
+        },
+        {
+            "name": "Exelon Corporation Common Stock",
+            "symbol": "EXC",
+            "industry": "Power Generation"
+        },
+        {
+            "name": "Expeditors International of Washington Inc. Common Stock",
+            "symbol": "EXPD",
+            "industry": "Oil Refining/Marketing"
+        },
+        {
+            "name": "Expedia Group Inc. Common Stock",
+            "symbol": "EXPE",
+            "industry": "Transportation Services"
+        },
+        {
+            "name": "Diamondback Energy Inc. Common Stock",
+            "symbol": "FANG",
+            "industry": "Oil & Gas Production"
+        },
+        {
+            "name": "Fastenal Company Common Stock",
+            "symbol": "FAST",
+            "industry": "RETAIL: Building Materials"
+        },
+        {
+            "name": "F5 Inc. Common Stock",
+            "symbol": "FFIV",
+            "industry": "EDP Services"
+        },
+        {
+            "name": "Fiserv Inc. Common Stock",
+            "symbol": "FISV",
+            "industry": "Business Services"
+        },
+        {
+            "name": "Fifth Third Bancorp Common Stock",
+            "symbol": "FITB",
+            "industry": "Major Banks"
+        },
+        {
+            "name": "Fox Corporation Class B Common Stock",
+            "symbol": "FOX",
+            "industry": "Broadcasting"
+        },
+        {
+            "name": "Fox Corporation Class A Common Stock",
+            "symbol": "FOXA",
+            "industry": "Broadcasting"
+        },
+        {
+            "name": "First Solar Inc. Common Stock",
+            "symbol": "FSLR",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Fortinet Inc. Common Stock",
+            "symbol": "FTNT",
+            "industry": "Computer peripheral equipment"
+        },
+        {
+            "name": "GE HealthCare Technologies Inc. Common Stock ",
+            "symbol": "GEHC",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Gen Digital Inc. Common Stock",
+            "symbol": "GEN",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Gilead Sciences Inc. Common Stock",
+            "symbol": "GILD",
+            "industry": "Biotechnology: Pharmaceutical Preparations"
+        },
+        {
+            "name": "Alphabet Inc. Class C Capital Stock",
+            "symbol": "GOOG",
+            "industry": "Computer Software: Programming Data Processing"
+        },
+        {
+            "name": "Alphabet Inc. Class A Common Stock",
+            "symbol": "GOOGL",
+            "industry": "Computer Software: Programming Data Processing"
+        },
+        {
+            "name": "Hasbro Inc. Common Stock",
+            "symbol": "HAS",
+            "industry": "Recreational Games/Products/Toys"
+        },
+        {
+            "name": "Huntington Bancshares Incorporated Common Stock",
+            "symbol": "HBAN",
+            "industry": "Major Banks"
+        },
+        {
+            "name": "Hologic Inc. Common Stock",
+            "symbol": "HOLX",
+            "industry": "Medical Electronics"
+        },
+        {
+            "name": "Honeywell International Inc. Common Stock",
+            "symbol": "HON",
+            "industry": "Aerospace"
+        },
+        {
+            "name": "Henry Schein Inc. Common Stock",
+            "symbol": "HSIC",
+            "industry": "Medical Specialities"
+        },
+        {
+            "name": "Host Hotels & Resorts Inc. Common Stock",
+            "symbol": "HST",
+            "industry": "Real Estate Investment Trusts"
+        },
+        {
+            "name": "IDEXX Laboratories Inc. Common Stock",
+            "symbol": "IDXX",
+            "industry": "Biotechnology: In Vitro & In Vivo Diagnostic Substances"
+        },
+        {
+            "name": "Illumina Inc. Common Stock",
+            "symbol": "ILMN",
+            "industry": "Medical Specialities"
+        },
+        {
+            "name": "Incyte Corp. Common Stock",
+            "symbol": "INCY",
+            "industry": "Biotechnology: Commercial Physical & Biological Resarch"
+        },
+        {
+            "name": "Intel Corporation Common Stock",
+            "symbol": "INTC",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Intuit Inc. Common Stock",
+            "symbol": "INTU",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Intuitive Surgical Inc. Common Stock",
+            "symbol": "ISRG",
+            "industry": "Industrial Specialties"
+        },
+        {
+            "name": "J.B. Hunt Transport Services Inc. Common Stock",
+            "symbol": "JBHT",
+            "industry": "Trucking Freight/Courier Services"
+        },
+        {
+            "name": "Jack Henry & Associates Inc. Common Stock",
+            "symbol": "JKHY",
+            "industry": "Retail: Computer Software & Peripheral Equipment"
+        },
+        {
+            "name": "Keurig Dr Pepper Inc. Common Stock",
+            "symbol": "KDP",
+            "industry": "Beverages (Production/Distribution)"
+        },
+        {
+            "name": "The Kraft Heinz Company Common Stock",
+            "symbol": "KHC",
+            "industry": "Packaged Foods"
+        },
+        {
+            "name": "KLA Corporation Common Stock",
+            "symbol": "KLAC",
+            "industry": "Electronic Components"
+        },
+        {
+            "name": "LKQ Corporation Common Stock",
+            "symbol": "LKQ",
+            "industry": "Motor Vehicles"
+        },
+        {
+            "name": "Alliant Energy Corporation Common Stock",
+            "symbol": "LNT",
+            "industry": "Power Generation"
+        },
+        {
+            "name": "Lam Research Corporation Common Stock",
+            "symbol": "LRCX",
+            "industry": "Industrial Machinery/Components"
+        },
+        {
+            "name": "Marriott International Class A Common Stock",
+            "symbol": "MAR",
+            "industry": "Hotels/Resorts"
+        },
+        {
+            "name": "Microchip Technology Incorporated Common Stock",
+            "symbol": "MCHP",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Mondelez International Inc. Class A Common Stock",
+            "symbol": "MDLZ",
+            "industry": "Packaged Foods"
+        },
+        {
+            "name": "Meta Platforms Inc. Class A Common Stock",
+            "symbol": "META",
+            "industry": "Computer Software: Programming Data Processing"
+        },
+        {
+            "name": "MarketAxess Holdings Inc. Common Stock",
+            "symbol": "MKTX",
+            "industry": "Investment Bankers/Brokers/Service"
+        },
+        {
+            "name": "Monster Beverage Corporation",
+            "symbol": "MNST",
+            "industry": "Beverages (Production/Distribution)"
+        },
+        {
+            "name": "Monolithic Power Systems Inc. Common Stock",
+            "symbol": "MPWR",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Moderna Inc. Common Stock",
+            "symbol": "MRNA",
+            "industry": "Biotechnology: Biological Products (No Diagnostic Substances)"
+        },
+        {
+            "name": "Microsoft Corporation Common Stock",
+            "symbol": "MSFT",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Match Group Inc. Common Stock",
+            "symbol": "MTCH",
+            "industry": "Computer Software: Programming Data Processing"
+        },
+        {
+            "name": "Micron Technology Inc. Common Stock",
+            "symbol": "MU",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Nasdaq Inc. Common Stock",
+            "symbol": "NDAQ",
+            "industry": "Investment Bankers/Brokers/Service"
+        },
+        {
+            "name": "Nordson Corporation Common Stock",
+            "symbol": "NDSN",
+            "industry": "Industrial Machinery/Components"
+        },
+        {
+            "name": "Netflix Inc. Common Stock",
+            "symbol": "NFLX",
+            "industry": "Consumer Electronics/Video Chains"
+        },
+        {
+            "name": "NetApp Inc. Common Stock",
+            "symbol": "NTAP",
+            "industry": "Electronic Components"
+        },
+        {
+            "name": "Northern Trust Corporation Common Stock",
+            "symbol": "NTRS",
+            "industry": "Major Banks"
+        },
+        {
+            "name": "NVIDIA Corporation Common Stock",
+            "symbol": "NVDA",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Newell Brands Inc. Common Stock",
+            "symbol": "NWL",
+            "industry": "Plastic Products"
+        },
+        {
+            "name": "News Corporation Class B Common Stock",
+            "symbol": "NWS",
+            "industry": "Newspapers/Magazines"
+        },
+        {
+            "name": "News Corporation Class A Common Stock",
+            "symbol": "NWSA",
+            "industry": "Newspapers/Magazines"
+        },
+        {
+            "name": "NXP Semiconductors N.V. Common Stock",
+            "symbol": "NXPI",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Old Dominion Freight Line Inc. Common Stock",
+            "symbol": "ODFL",
+            "industry": "Trucking Freight/Courier Services"
+        },
+        {
+            "name": "ON Semiconductor Corporation Common Stock",
+            "symbol": "ON",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "O'Reilly Automotive Inc. Common Stock",
+            "symbol": "ORLY",
+            "industry": "Auto & Home Supply Stores"
+        },
+        {
+            "name": "Paramount Global Class B Common Stock",
+            "symbol": "PARA",
+            "industry": "Broadcasting"
+        },
+        {
+            "name": "Paychex Inc. Common Stock",
+            "symbol": "PAYX",
+            "industry": "Diversified Commercial Services"
+        },
+        {
+            "name": "PACCAR Inc. Common Stock",
+            "symbol": "PCAR",
+            "industry": "Auto Manufacturing"
+        },
+        {
+            "name": "PepsiCo Inc. Common Stock",
+            "symbol": "PEP",
+            "industry": "Beverages (Production/Distribution)"
+        },
+        {
+            "name": "Principal Financial Group Inc Common Stock",
+            "symbol": "PFG",
+            "industry": "Accident &Health Insurance"
+        },
+        {
+            "name": "Insulet Corporation Common Stock",
+            "symbol": "PODD",
+            "industry": "Medical/Dental Instruments"
+        },
+        {
+            "name": "Pool Corporation Common Stock",
+            "symbol": "POOL",
+            "industry": "Industrial Specialties"
+        },
+        {
+            "name": "PTC Inc. Common Stock",
+            "symbol": "PTC",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "PayPal Holdings Inc. Common Stock",
+            "symbol": "PYPL",
+            "industry": "Business Services"
+        },
+        {
+            "name": "QUALCOMM Incorporated Common Stock",
+            "symbol": "QCOM",
+            "industry": "Radio And Television Broadcasting And Communications Equipment"
+        },
+        {
+            "name": "Qorvo Inc. Common Stock",
+            "symbol": "QRVO",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Regency Centers Corporation Common Stock",
+            "symbol": "REG",
+            "industry": "Real Estate Investment Trusts"
+        },
+        {
+            "name": "Regeneron Pharmaceuticals Inc. Common Stock",
+            "symbol": "REGN",
+            "industry": "Biotechnology: Pharmaceutical Preparations"
+        },
+        {
+            "name": "Ross Stores Inc. Common Stock",
+            "symbol": "ROST",
+            "industry": "Clothing/Shoe/Accessory Stores"
+        },
+        {
+            "name": "SBA Communications Corporation Class A Common Stock",
+            "symbol": "SBAC",
+            "industry": "Real Estate Investment Trusts"
+        },
+        {
+            "name": "Starbucks Corporation Common Stock",
+            "symbol": "SBUX",
+            "industry": "Restaurants"
+        },
+        {
+            "name": "SolarEdge Technologies Inc. Common Stock",
+            "symbol": "SEDG",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Synopsys Inc. Common Stock",
+            "symbol": "SNPS",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Steel Dynamics Inc.",
+            "symbol": "STLD",
+            "industry": "Steel/Iron Ore"
+        },
+        {
+            "name": "Seagate Technology Holdings PLC Ordinary Shares (Ireland)",
+            "symbol": "STX",
+            "industry": "Electronic Components"
+        },
+        {
+            "name": "Skyworks Solutions Inc. Common Stock",
+            "symbol": "SWKS",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "Bio-Techne Corp Common Stock",
+            "symbol": "TECH",
+            "industry": "Biotechnology: Biological Products (No Diagnostic Substances)"
+        },
+        {
+            "name": "Teradyne Inc. Common Stock",
+            "symbol": "TER",
+            "industry": "Electrical Products"
+        },
+        {
+            "name": "T-Mobile US Inc. Common Stock",
+            "symbol": "TMUS",
+            "industry": "Telecommunications Equipment"
+        },
+        {
+            "name": "Trimble Inc. Common Stock",
+            "symbol": "TRMB",
+            "industry": "Industrial Machinery/Components"
+        },
+        {
+            "name": "T. Rowe Price Group Inc. Common Stock",
+            "symbol": "TROW",
+            "industry": "Investment Bankers/Brokers/Service"
+        },
+        {
+            "name": "Tractor Supply Company Common Stock",
+            "symbol": "TSCO",
+            "industry": "RETAIL: Building Materials"
+        },
+        {
+            "name": "Tesla Inc. Common Stock",
+            "symbol": "TSLA",
+            "industry": "Auto Manufacturing"
+        },
+        {
+            "name": "Take-Two Interactive Software Inc. Common Stock",
+            "symbol": "TTWO",
+            "industry": "Computer Software: Prepackaged Software"
+        },
+        {
+            "name": "Texas Instruments Incorporated Common Stock",
+            "symbol": "TXN",
+            "industry": "Semiconductors"
+        },
+        {
+            "name": "United Airlines Holdings Inc. Common Stock",
+            "symbol": "UAL",
+            "industry": "Air Freight/Delivery Services"
+        },
+        {
+            "name": "Ulta Beauty Inc. Common Stock",
+            "symbol": "ULTA",
+            "industry": "Other Specialty Stores"
+        },
+        {
+            "name": "Verisk Analytics Inc. Common Stock",
+            "symbol": "VRSK",
+            "industry": "EDP Services"
+        },
+        {
+            "name": "VeriSign Inc. Common Stock",
+            "symbol": "VRSN",
+            "industry": "EDP Services"
+        },
+        {
+            "name": "Vertex Pharmaceuticals Incorporated Common Stock",
+            "symbol": "VRTX",
+            "industry": "EDP Services"
+        },
+        {
+            "name": "Viatris Inc. Common Stock",
+            "symbol": "VTRS",
+            "industry": " Medicinal Chemicals and Botanical Products "
+        },
+        {
+            "name": "Walgreens Boots Alliance Inc. Common Stock",
+            "symbol": "WBA",
+            "industry": "Retail-Drug Stores and Proprietary Stores"
+        },
+        {
+            "name": "Warner Bros. Discovery Inc. Series A Common Stock ",
+            "symbol": "WBD",
+            "industry": "Cable & Other Pay Television Services"
+        },
+        {
+            "name": "Western Digital Corporation Common Stock",
+            "symbol": "WDC",
+            "industry": "Electronic Components"
+        },
+        {
+            "name": "Willis Towers Watson Public Limited Company Ordinary Shares",
+            "symbol": "WTW",
+            "industry": "Specialty Insurers"
+        },
+        {
+            "name": "Wynn Resorts Limited Common stock",
+            "symbol": "WYNN",
+            "industry": "Hotels/Resorts"
+        },
+        {
+            "name": "Xcel Energy Inc. Common Stock",
+            "symbol": "XEL",
+            "industry": "Power Generation"
+        },
+        {
+            "name": "DENTSPLY SIRONA Inc. Common Stock",
+            "symbol": "XRAY",
+            "industry": "Medical/Dental Instruments"
+        },
+        {
+            "name": "Zebra Technologies Corporation Class A Common Stock",
+            "symbol": "ZBRA",
+            "industry": "Industrial Machinery/Components"
+        },
+        {
+            "name": "Zions Bancorporation N.A. Common Stock",
+            "symbol": "ZION",
+            "industry": "Major Banks"
+        }
+    ]
+}
