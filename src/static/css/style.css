@@ -6,7 +6,7 @@
 
 body {
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif !important; */
     margin-bottom: 0px;
     /* background-color: #dfb6396b !important; */
     background-repeat: none;
@@ -16,10 +16,12 @@ nav {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Canvas for the stocks graphs */
 canvas {
     background-color: rgb(248, 249, 250);
 }
 
+/* Main background image */
 .main-image {
     background-image: url("../assets/image (1).png");
     z-index: -100;
@@ -38,6 +40,7 @@ canvas {
     cursor: pointer; /* Add a pointer on hover */
   }
 
+/* Fixed footer */
 .footer {
     position: fixed;
     bottom: 0;
@@ -46,6 +49,7 @@ canvas {
     width: 100%;
 }
 
+/* Image for the news articles */
 .article-img {
     height: 20vw;
 }
@@ -54,6 +58,7 @@ canvas {
     height: 50px;
 }
 
+/* Github links in the footer */
 .contributor-img {
     display: flex;
     justify-content: space-between;
@@ -71,20 +76,42 @@ canvas {
     
 }
 
-.back-ground-image {
-    /* background-image: url("../assets/image (1).png"); */
-    /* width: 100vw; */
-    /* height: 100vh;
-    margin: 0 !important;
-    margin-left: 0px; */
-}
-
 .stock-graph-select {
     text-align: left;
 }
 
+/* Change style for the links */
 .link-button {
     text-decoration: none;
     font-weight: bold;
-    color:rgb(232, 148, 12)
+    color:rgb(195, 136, 41)
 }
+
+/* -- from https://www.w3schools.com/css/css_tooltip.asp */
+/* Tooltip container */
+.tooltip-css {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+.tooltip-css .tooltiptext-css {
+    visibility: hidden;
+    width: 100px;
+    background-color: #6c757d;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 4px;
+
+    /* Position the tooltip text - see examples below! */
+    top: -5px;
+    left: 105%;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-css:hover .tooltiptext-css{
+    visibility: visible;
+  }
