@@ -26,13 +26,13 @@ window.onload = function () {
 };
 
 jQuery(document).ready(function ($) {
-    $(function () {
-        $('input[type=radio]').each(function () {
-            var state = JSON.parse(localStorage.getItem('radio_' + this.id));
+    // $(function () {
+    //     $('input[type=radio]').each(function () {
+    //         var state = JSON.parse(localStorage.getItem('radio_' + this.id));
 
-            if (state) this.checked = state.checked;
-        });
-    });
+    //         if (state) this.checked = state.checked;
+    //     });
+    // });
 
     $(window).bind('unload', function () {
         $('input[type=radio]').each(function () {
