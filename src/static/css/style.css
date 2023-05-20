@@ -25,11 +25,18 @@ canvas {
     z-index: -100;
 }
 
-/* .overlay {
-    background-color: #dfb6396b !important;
-    height: 100vh;
-    z-index: 99;
-} */
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(117, 105, 73, 0.625); /* Background colour with opacity */
+    z-index: -99; /* Specify a stack order*/
+    cursor: pointer; /* Add a pointer on hover */
+  }
 
 .footer {
     position: fixed;
@@ -38,14 +45,6 @@ canvas {
     padding: 0 10px;
     width: 100%;
 }
-/* 
-.full-height {
-    height: 100%; 
-} */
-
-/* .full-window {
-    height: 100vh; 
-} */
 
 .article-img {
     height: 20vw;
