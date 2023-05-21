@@ -7,9 +7,11 @@
     <div class="bg-light w-100 p-4 rounded-3">
       <div class="row  align-items-center">
         <div class="col"><h1>Stock details</h1></div>
-        <div class="col text-end tooltip-css">
-          <h4><a href="{{ url_for('profile.manage_profile', username=username) }}" class="link-button"><i class="fas fa-user-alt"></i></a></h4>
-          <span class="tooltiptext-css tp-text-right small">Back to Profile</span>
+        <div class="col text-end small">
+          <a href="{{ url_for('profile.manage_profile', username=username) }}" class="link-button tooltip-css">
+            <i class="fas fa-user-alt profile-btn"></i>
+              <span class="tooltiptext-css tp-text-left small">Back to Profile</span>
+          </a>
         </div>
       </div>
       <hr>
