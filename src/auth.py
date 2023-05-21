@@ -32,7 +32,7 @@ def logout():
     session.pop('loggedin', None)
     session.pop('user_id', None)
     session.pop('email', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('auth.login'))
 
 
 #register
