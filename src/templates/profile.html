@@ -75,22 +75,22 @@
                     <ul>
                         {% for stock in preferred_stocks %}
                         <li>{{ stock.symbol }}
-                            <div class="tooltip-css">
-                            <a href="{{ url_for ('stocks_graph.render', stock=stock.symbol) }}" ><span class="tooltiptext-css">Show graph</span>
-                            <span class="m-2"><i class="fas fa-chart-line link-button"></i></span></a>
+                            <div class="tooltip-css small">
+                                <a href="{{ url_for ('stocks_graph.render', stock=stock.symbol) }}" >
+                                    <span class="tooltiptext-css tp-text-left">Show graph</span>
+                                <span class="m-2"><i class="fas fa-chart-line link-button"></i></span>
+                                </a>
                             </div>
-                            <div class="tooltip-css">
-                            <a href="{{ url_for ('stocks_news.get_news', stock=stock.symbol, username=username) }}"class="tooltip-css"><span class="tooltiptext-css">Show news</span><span class="m-2"><i class="fas fa-newspaper link-button"></i></span></a>
+                            <div class="tooltip-css small">
+                                <a href="{{ url_for ('stocks_news.get_news', stock=stock.symbol, username=username) }}">
+                                    <span class="tooltiptext-css tp-text-right">Show news</span>
+                                    <span class="m-2"><i class="fas fa-newspaper link-button"></i></span>
+                                </a>
+                            </div>
                         </li>
-
                         {% endfor %}
                     </ul>
                 </div>
-              <!-- <div class="col text-end"><a
-                    href="{{ url_for ('stocks_news.get_news', username=username) }}" class="ms-2 link-button">
-                    <i class="fas fa-newspaper ms-2"></i>
-                    Your news <i class="fas fa-angle-double-right"></i></a>
-                </div> -->
             </div>
         </div>
     </div>

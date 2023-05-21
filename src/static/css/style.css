@@ -58,6 +58,10 @@ canvas {
     height: 50px;
 }
 
+.profile-btn {
+    font-size: 1.5em;
+}
+
 /* Github links in the footer */
 .contributor-img {
     display: flex;
@@ -104,13 +108,22 @@ canvas {
     padding: 5px 0;
     border-radius: 4px;
 
-    /* Position the tooltip text - see examples below! */
+    /* Position the tooltip text*/
     top: -5px;
-    left: 105%;
     position: absolute;
     z-index: 1;
   }
   
+.tp-text-right {
+    /* Position the tooltip to the right */
+    left: 105%;
+    }
+
+.tp-text-left {
+    /* Position the tooltip to the left */
+    right: 105%;
+    }   
+
   /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip-css:hover .tooltiptext-css{
     visibility: visible;
