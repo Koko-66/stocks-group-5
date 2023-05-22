@@ -4,7 +4,8 @@ from datetime import date, timedelta
 # import pandas as pd
 import yfinance as yf
 from flask import Blueprint, request, render_template,session
-from src.database import User, Preferences
+from src.auth import login_required
+from src.database import User
 from src.utils import get_preferences
 
 
@@ -12,6 +13,7 @@ stocks_graph = Blueprint('stocks_graph', __name__, url_prefix='/stocks_graph')
 
 
 @stocks_graph.route('/', methods=['GET'])
+@login_required
 def render():
     if session:
         user = User.query.filter_by(id=session["user_id"]).first()
@@ -40,6 +42,7 @@ def render():
     else:
         return render_template('index.html')
 
+
 def closing_price(stock):
     Start = date.today() - timedelta(365)
     Start.strftime('%Y-%m-%d')
@@ -49,7 +52,7 @@ def closing_price(stock):
 
     Asset = yf.download(stock, start=Start,
       end=End)['Adj Close']
-    
+
     Asset = Asset.to_dict()
     temp_dates=list(Asset.keys())
     dates=[date_obj.strftime('%Y-%m-%d') for date_obj in temp_dates]
