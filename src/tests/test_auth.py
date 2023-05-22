@@ -39,10 +39,9 @@ def test_login(client, app):
 
 def test_logout(client, app):
     """Test user logut"""
-    
     response = client.get("auth/logout")
     with app.app_context():
         assert response.status_code == 302
     
     with client.session_transaction() as session:
-        assert session['user_id'] not in session
+        assert session == {}
