@@ -113,7 +113,6 @@ def remove_stocks_preferences(username):
 
         stock_id = Stock.query.filter_by(symbol=symbol).first().id
 
-        db.session.query(Stock).filter_by(symbol=symbol).delete()
         db.session.query(stocks_preferences).filter_by(stock_id=stock_id).delete()
         db.session.commit()
 
