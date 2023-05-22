@@ -19,7 +19,7 @@ def create_app(test_config=None):
             )
     # if test_config is not None, then the app is in test mode
     else:
-        app.config.from_mapping(test_config)
+        app.config.from_object(test_config)
 
 
     #initialising extensions
