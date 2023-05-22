@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, session, url_for
 import os
 from src.auth import auth
 from src.database import db
+from flask_session import Session
+from src.auth import login_required
+
 
 
 def create_app(test_config=None):
@@ -15,8 +18,11 @@ def create_app(test_config=None):
         app.config.from_mapping(
             SECRET_KEY=os.environ.get("SECRET_KEY"),
             SQLALCHEMY_DATABASE_URI=os.environ.get("SQLALCHEMY_DB_URI"),
-            SQLALCHEMY_TRACK_MODIFICATIONS=False
-            )
+            SQLALCHEMY_TRACK_MODIFICATIONS=False,
+            SESSION_TYPE='filesystem',
+            SESSION_PERMANENT=True,
+            SESSION_USE_SIGNER=True
+        )
     # if test_config is not None, then the app is in test mode
     else:
         app.config.from_mapping(test_config)
@@ -26,10 +32,12 @@ def create_app(test_config=None):
     db.app=app
     db.init_app(app)
 
+    Session(app)
+
 
     #registering blueprints
 
-    blueprints = ['auth', 'home', 'stocks_news', 'profile', 'stocks_graph', 'notifications']
+    blueprints = ['auth', 'home', 'stocks_news', 'stocks_graph', 'profile', 'notifications']
     
     for bp in blueprints:
         app.register_blueprint(__import__(f'src.{bp}', fromlist=[bp]).__getattribute__(bp))

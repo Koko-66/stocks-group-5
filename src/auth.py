@@ -1,5 +1,10 @@
 from flask import Flask, Blueprint, render_template, request, redirect, session, url_for
 import re
+from functools import wraps
+from flask_login import login_required
+
+
+
 
 #importing database
 from src.database import User, Preferences, db
@@ -21,19 +26,18 @@ def login():
             session['username'] = user.username
             session['email'] = user.email
             message = 'Logged in successfully!'
-            return redirect(f'../profile/{user.username}')
+            return redirect(url_for('profile.manage_profile', username=user.username))
         else:
             message = 'Please enter correct email / password!'
     return render_template('login.html', message=message)
 
+
 #logout option
 @auth.route('/logout')
+@login_required
 def logout():
-    session.pop('loggedin', None)
-    session.pop('user_id', None)
-    session.pop('email', None)
-    return redirect(url_for('login'))
-
+    session['loggedin'] = False
+    return redirect(url_for('auth.login'))
 
 #register
 @auth.route('/register', methods=['GET', 'POST'])
@@ -75,7 +79,15 @@ def register():
     return render_template('register.html', message=message, user=user)
 
 
+#function to make sure users who logged out can't be logged in with just profile name
+def login_required(func):
+    @wraps(func)
+    def decorated_view(*args, **kwargs):
+        if 'loggedin' not in session:
+            return redirect(url_for('auth.login'))
+        return func(*args, **kwargs)
+    return decorated_view
 
 
-# if __name__ == "__main__":
-#     app.run()
+if __name__ == "__main__":
+   app.run()
