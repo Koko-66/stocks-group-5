@@ -45,7 +45,7 @@ def login():
 @login_required
 def logout():
     session.clear()
-    return redirect(url_for('auth.login')
+    return redirect(url_for('auth.login'))
 
                     
 #register
@@ -86,4 +86,3 @@ def register():
         message = 'Please fill out the form!'
 
     return render_template('register.html', message=message, user=user)
-
