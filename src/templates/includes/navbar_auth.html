@@ -19,7 +19,7 @@
             <a class="nav-link {{'active' if active_page == 'news'}}" href="{{ url_for('stocks_news.get_news', username=username, stocks=None) }}">News</a>
           </li>
         </ul>          
-		<div class="right-10 nav-item"> <a class="nav-link" href="{{ url_for('auth.login') }}">Logout</a></div>
+		<div class="right-10 nav-item"> <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></div>
       </div>
     </div>
 </nav>

@@ -13,30 +13,32 @@ stocks_graph = Blueprint('stocks_graph', __name__, url_prefix='/stocks_graph')
 
 @stocks_graph.route('/', methods=['GET'])
 def render():
+    if session:
+        user = User.query.filter_by(id=session["user_id"]).first()
+        preferences = get_preferences(user)
     
-    user = User.query.filter_by(id=session["user_id"]).first()
-    preferences = get_preferences(user)
-    
-    default = preferences.stocks[0].symbol
-    preferred_stocks = preferences.stocks
-    if request.args.get('stock') == None:
-        dates, prices=closing_price(default)
-        stock=default
+        default = preferences.stocks[0].symbol
+        preferred_stocks = preferences.stocks
+        if request.args.get('stock') == None:
+            dates, prices=closing_price(default)
+            stock=default
+        else:
+            args = request.args
+            stock = args.get('stock')
+            dates, prices=closing_price(stock)
+
+        dates_json = json.dumps(dates)
+        prices_json = json.dumps(prices)
+
+        return render_template('stocks_graph.html',
+                            preferences=preferences,
+                            preferred_stocks=preferred_stocks,
+                            dates=dates_json,
+                            prices=prices_json,
+                            stock=stock,
+                            username=user.username)
     else:
-        args = request.args
-        stock = args.get('stock')
-        dates, prices=closing_price(stock)
-
-    dates_json = json.dumps(dates)
-    prices_json = json.dumps(prices)
-
-    return render_template('stocks_graph.html',
-                           preferences=preferences,
-                           preferred_stocks=preferred_stocks,
-                           dates=dates_json,
-                           prices=prices_json,
-                           stock=stock,
-                           username=user.username)
+        return render_template('index.html')
 
 def closing_price(stock):
     Start = date.today() - timedelta(365)

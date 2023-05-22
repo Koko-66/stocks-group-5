@@ -1,15 +1,23 @@
-from flask import Flask, Blueprint, render_template, request, redirect, session, url_for
+from flask import Blueprint, render_template, request, redirect, session, url_for
 import re
 from functools import wraps
-from flask_login import login_required
-
-
 
 
 #importing database
 from src.database import User, Preferences, db
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
+
+
+#function to make sure users who logged out can't be logged in with just profile name
+def login_required(func):
+    @wraps(func)
+    def decorated_view(*args, **kwargs):
+        if 'loggedin' not in session:
+            return redirect(url_for('auth.login'))
+        return func(*args, **kwargs)
+    return decorated_view
+  
 
 #handling login page
 @auth.route('/login', methods=['GET', 'POST'])
@@ -36,9 +44,10 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
-    session['loggedin'] = False
-    return redirect(url_for('auth.login'))
+    session.clear()
+    return redirect(url_for('auth.login')
 
+                    
 #register
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
@@ -78,16 +87,3 @@ def register():
 
     return render_template('register.html', message=message, user=user)
 
-
-#function to make sure users who logged out can't be logged in with just profile name
-def login_required(func):
-    @wraps(func)
-    def decorated_view(*args, **kwargs):
-        if 'loggedin' not in session:
-            return redirect(url_for('auth.login'))
-        return func(*args, **kwargs)
-    return decorated_view
-
-
-if __name__ == "__main__":
-   app.run()
