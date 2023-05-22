@@ -4,7 +4,7 @@ from flask import (Blueprint,
                    request)
 from src.database import db, User, Preferences, Stock
 from src.utils import load_languages, load_stocks, get_preferences
-
+from src.auth import login_required
 
 profile = Blueprint('profile', __name__, url_prefix='/profile')
 
@@ -37,6 +37,7 @@ profile = Blueprint('profile', __name__, url_prefix='/profile')
 
 
 @profile.route('/<username>', methods=['GET', 'POST'])
+@login_required
 def manage_profile(username):
     """Show all stocks"""
 
@@ -66,6 +67,7 @@ def manage_profile(username):
 
 
 @profile.route('/<username>/update_stocks', methods=['POST', 'GET'])
+@login_required
 def update_stocks_preferences(username):
     """Update stock preferences"""
     # message = ""
@@ -98,6 +100,7 @@ def update_stocks_preferences(username):
     return redirect('/..')
 
 @profile.route('/<username>/update_language', methods=['POST', 'GET'])
+@login_required
 def update_language_preferences(username):
     """Update user language preference"""
     # get current user from the database
