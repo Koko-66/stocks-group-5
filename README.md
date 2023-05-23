@@ -28,3 +28,7 @@ To exit pipenv - write `exit` on your terminal.
 ```bash
 git checkout -b feature/feature-branch-name base-branch
 ```
+
+## PyTest Coverage
+
+![Pytest Coverage](pytest-result.png)
