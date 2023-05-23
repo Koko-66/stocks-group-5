@@ -1,6 +1,7 @@
 # https://www.youtube.com/watch?v=RLKW7ZMJOf4
 from flask import session
 from src.database import User
+from src.tests import _auth as auth
 
 def test_render_home(client, app):
     """Test renering home page"""
@@ -11,10 +12,7 @@ def test_render_home(client, app):
 
 def test_registration(client, app):
     """Test user registration"""
-    response = client.post('auth/register', data={
-        'username':'testuser',
-        'email':'test@sample.com',
-        'password':'somepassword'})
+    response = auth.register(client)
 
     with app.app_context():
         assert response.status_code == 200
@@ -24,10 +22,7 @@ def test_registration(client, app):
 
 def test_login(client, app):
     """Test user login"""
-    response = client.post('auth/login', data={
-        'username':'testuser',
-        'email':'test@sample.com',
-        'password':'somepassword'})
+    response = auth.login(client)
 
     # assert page redirecting after loging
     with app.app_context():
@@ -38,11 +33,11 @@ def test_login(client, app):
 
 
 def test_logout(client, app):
-    """Test user logut"""
+    """Test user logout"""
     
     response = client.get("auth/logout")
     with app.app_context():
         assert response.status_code == 302
     
     with client.session_transaction() as session:
-        assert session['user_id'] not in session
+        assert session == {}
