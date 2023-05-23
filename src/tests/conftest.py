@@ -2,6 +2,7 @@ import pytest
 from src.tests.test_config import TestingConfig
 from src import create_app, db
 
+
 @pytest.fixture()
 def app():
     test_config = TestingConfig()
