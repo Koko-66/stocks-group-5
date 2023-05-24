@@ -6,8 +6,7 @@ window.onload = function () {
             label: 'Price ($)',
             data: prices,
             fill: true,
-            borderColor: 'rgb(223, 235, 227)',
-            // borderColor: 'rgb(86 114 143)',
+            borderColor: 'rgba(121, 127, 132, 0.5)',
             tension: 0.1
         }]
     }
@@ -26,14 +25,6 @@ window.onload = function () {
 };
 
 jQuery(document).ready(function ($) {
-    // $(function () {
-    //     $('input[type=radio]').each(function () {
-    //         var state = JSON.parse(localStorage.getItem('radio_' + this.id));
-
-    //         if (state) this.checked = state.checked;
-    //     });
-    // });
-
     $(window).bind('unload', function () {
         $('input[type=radio]').each(function () {
             localStorage.setItem(

@@ -51,7 +51,7 @@ canvas {
 
 /* Image for the news articles */
 .article-img {
-    height: 20vw;
+    height: 15vw;
 }
 
 .logo {
@@ -129,9 +129,10 @@ canvas {
     visibility: visible;
   }
 
- .fa-trash {
-  color: #c38728;
+.smaller {
+    font-size: 1.35em;
 }
+
 
 .fa-trash:hover {
   color: #ce2727;
