@@ -5,7 +5,7 @@ import telebot
 import requests
 from datetime import datetime
 from apscheduler.schedulers.blocking import BlockingScheduler
-
+import os 
 
 sched = BlockingScheduler()
 bot = telebot.TeleBot("5619495208:AAEcLoGTvqc4tgaJC2rKplnavHqUgg6Js0I")
@@ -29,7 +29,7 @@ def render():
 
 def getStockData(stock):
     base_url = "https://financialmodelingprep.com/api/v3/quote/"
-    key = "5d26f4a4e0ffc92c6f8282b3da0169d2"
+    key = os.environ.get('NOTIFICATION_KEY')
     full_url = base_url + stock + "?apikey=" + key
     r = requests.get(full_url)
     stock_data = r.json()
