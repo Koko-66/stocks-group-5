@@ -4,39 +4,13 @@ from flask import (Blueprint,
                    request)
 from src.database import db, User, Preferences, Stock, stocks_preferences
 from src.utils import load_languages, load_stocks, get_preferences
-
+from src.auth import login_required
 
 profile = Blueprint('profile', __name__, url_prefix='/profile')
 
 
-# def load_languages():
-#      # load language data
-#     with open('./src/static/data/languages.json') as language_data:
-#         language_data = json.load(language_data)
-
-#     return {"languages":language_data['languages']}
-
-
-# def load_stocks():
-#     # load symbol data
-#     with open('./src/static/data/stocks_data.json') as symbol_data:
-#         stock_data = json.load(symbol_data)
-
-#     return {"stocks": stock_data['stocks']}
-
-
-# def get_preferences(user):
-#     try:
-#         preferences = Preferences.query.filter_by(user_id=user.id).first()
-#         print(preferences)
-#         return preferences
-#     except:
-#         message = "No preferences set"
-#         print(message)
-#         return message
-
-
 @profile.route('/<username>', methods=['GET', 'POST'])
+@login_required
 def manage_profile(username):
     """Show all stocks"""
 
@@ -66,6 +40,7 @@ def manage_profile(username):
 
 
 @profile.route('/<username>/update_stocks', methods=['POST', 'GET'])
+@login_required
 def update_stocks_preferences(username):
     """Update stock preferences"""
     # message = ""
@@ -120,6 +95,7 @@ def remove_stocks_preferences(username):
     return redirect('/..')
 
 @profile.route('/<username>/update_language', methods=['POST', 'GET'])
+@login_required
 def update_language_preferences(username):
     """Update user language preference"""
     # get current user from the database
