@@ -50,6 +50,7 @@ def render():
                             prices=prices_json,
                             stock=stock,
                             username=user.username)
+
     else:
         return render_template('index.html')
 
