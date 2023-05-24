@@ -20,19 +20,25 @@ class User(db.Model):
     """ to create relationship with shares db if stored stocks=db.relationship('Shares', backref="user") can be inserted 
     and column user_id = db.Column(db.Integer, db.ForeignKey('user.id')) created in shares db"""
     #create string representation of our class
-    # def __repr__(self) -> str:
-    #     return 'User>>> {self.username}'
+    def __repr__(self) -> str:
+        return f'{self.username}'
+
 
 stocks_preferences = db.Table('stocks_preferences',
     db.Column('stock_id', db.Integer, db.ForeignKey('stock.id'), primary_key=True),
     db.Column('preferences_id', db.Integer, db.ForeignKey('preferences.id'), primary_key=True)
 )
 
+
 class Stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     symbol = db.Column(db.String(10), unique=True, nullable=False)
     name = db.Column(db.String(100), nullable=False)
     
+    def __repr__(self) -> str:
+        return f'{self.symbol}'
+
+  
 class Preferences(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -41,3 +47,6 @@ class Preferences(db.Model):
     alert_frequency = db.Column(db.String(10))
     news_preference = db.Column(db.String(50))
     news_language = db.Column(db.String(3))
+
+    def __repr__(self) -> str:
+        return f'{self.user_id} - preferences'
