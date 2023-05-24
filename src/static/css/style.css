@@ -51,7 +51,7 @@ canvas {
 
 /* Image for the news articles */
 .article-img {
-    height: 20vw;
+    height: 15vw;
 }
 
 .logo {
@@ -88,7 +88,13 @@ canvas {
 .link-button {
     text-decoration: none;
     font-weight: bold;
-    color:rgb(195, 136, 41)
+    color:rgb(195, 136, 41);
+}
+
+.link-button:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color:rgb(195, 136, 41) !important;
 }
 
 /* -- from https://www.w3schools.com/css/css_tooltip.asp */
@@ -129,9 +135,10 @@ canvas {
     visibility: visible;
   }
 
- .fa-trash {
-  color: #c38728;
+.smaller {
+    font-size: 1.35em;
 }
+
 
 .fa-trash:hover {
   color: #ce2727;

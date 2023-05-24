@@ -41,3 +41,4 @@ def test_logout(client, app):
     
     with client.session_transaction() as session:
         assert session == {}
+        assert session == {}
