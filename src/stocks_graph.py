@@ -30,10 +30,20 @@ def render():
     dates_json = json.dumps(dates)
     prices_json = json.dumps(prices)
 
+    last_price = float(json.dumps(prices[-1]))
+    prev_last_price = float(json.dumps(prices[-2]))
+
+    price_change = last_price - prev_last_price
+    perc_change = price_change / prev_last_price * 100
+
     return render_template('stocks_graph.html',
                            preferences=preferences,
                            preferred_stocks=preferred_stocks,
                            dates=dates_json,
+                           last_price=round(last_price),
+                           prev_last_price=prev_last_price,
+                           price_change=round(price_change, 2),
+                           percent=round(perc_change, 2),
                            prices=prices_json,
                            stock=stock,
                            username=user.username)
