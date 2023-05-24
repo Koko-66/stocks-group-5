@@ -88,7 +88,13 @@ canvas {
 .link-button {
     text-decoration: none;
     font-weight: bold;
-    color:rgb(195, 136, 41)
+    color:rgb(195, 136, 41);
+}
+
+.link-button:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color:rgb(195, 136, 41) !important;
 }
 
 /* -- from https://www.w3schools.com/css/css_tooltip.asp */

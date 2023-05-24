@@ -5,8 +5,11 @@
 {% block content %}
 <div class="bg-light w-100 p-4 rounded-3">
     <div class="row  align-items-center">
-      <div class="col"><h1>Your profile</h1></div>
-      <div class="col text-end">Logged in user: <span class="text-uppercase link-button text-small">{{ username }}</span></div>
+        <div class="col">
+            <h1>Your profile</h1>
+        </div>
+        <div class="col text-end">Logged in user: <span class="text-uppercase link-button text-small">{{ username
+                }}</span></div>
     </div>
     <hr>
     <div class="d-flex text-align-left m-2 p-3">
@@ -27,18 +30,7 @@
                         <button class="btn btn-secondary m-2" type="submit">Add</button>
                     </div>
                 </form>
-                <!-- 
-                <div>You current selection</div>
-                <hr>
-                <ul>
-                    {% for stock in preferred_stocks %}
-                    <li>{{ stock.symbol }}</li>
-
-                    {% endfor %}
-                </ul> -->
             </div>
-
-
             <div class="col">
                 <form class="my-2" method="POST"
                     action="{{ url_for('profile.update_language_preferences', username=username) }}">
@@ -55,7 +47,6 @@
                         <button class="btn btn-secondary m-2" type="submit">Update</button>
                     </div>
                 </form>
-                <!-- <div class="ms-3 link-button align-content-end"><i class="far fa-newspaper"></i><a href="{#{ url_for ('stocks_news.get_news', username=username) }#}" class="ms-2 link-button">Your news >></a></i></div> -->
             </div>
             <div class="d-flex gap-3 align-items-end">
                 <div class="col">
@@ -65,23 +56,29 @@
                         {% for stock in preferred_stocks %}
                         <li>
                             <div class="d-flex align-items-center">
-                            {{ stock.symbol }}
-                            <div class="tooltip-css">
-                            <a href="{{ url_for ('stocks_graph.render', stock=stock.symbol) }}" ><span class="tooltiptext-css">Show graph</span>
-                            <span class="m-2"><i class="fas fa-chart-line link-button"></i></span></a>
-                            </div>
-                            <div class="tooltip-css">
-                            <a href="{{ url_for ('stocks_news.get_news', stock=stock.symbol, username=username) }}"class="tooltip-css"><span class="tooltiptext-css">Show news</span><span class="m-2"><i class="fas fa-newspaper link-button"></i></span></a>
-                            </div>
-                            <form class="my-2" method="POST" action="{{ url_for('profile.remove_stocks_preferences', username=username) }}">
-                            <input type="hidden" name="stocks" value="{{ stock.symbol }}">
-                            <div class="tooltip-css">
-                            <button type="submit" class="tooltip-css" style="border: none; background: none; padding: 0;">
-                            <span class="tooltiptext-css">Remove</span>
-                            <span class="m-2"><i class="fas fa-trash"></i></span>
-                                </button>
-                              </div>
-                            </form>
+                                {{ stock.symbol }}
+                                <div class="tooltip-css small">
+                                    <a href="{{ url_for ('stocks_graph.render', stock=stock.symbol) }}"><span
+                                            class="tooltiptext-css tp-text-left">Show
+                                            graph</span>
+                                        <span class="m-2"><i class="fas fa-chart-line link-button"></i></span></a>
+                                </div>
+                                <div class="tooltip-css">
+                                    <a href="{{ url_for ('stocks_news.get_news', stock=stock.symbol, username=username) }}"
+                                        class="tooltip-css small"><span class="tooltiptext-css tp-text-right ">Show
+                                            news</span><span class="m-2"><i
+                                                class="fas fa-newspaper link-button"></i></span></a>
+                                </div>
+                                <div class="tooltip-css small">
+                                    <form method="POST"
+                                        action="{{ url_for('profile.remove_stocks_preferences', username=username) }}">
+                                        <input type="hidden" name="stocks" value="{{ stock.symbol }}">
+                                            <button type="submit" class="tooltip-css tp-text-right border-0 m-0 p-0 link-button">
+                                                <span class="tooltiptext-css tp-text-right link-button fw-light">Remove</span>
+                                                <span class=><i class="fas fa-trash"></i></span>
+                                            </button>
+                                    </form>
+                                </div>
                             </div>
                         </li>
                         {% endfor %}
@@ -94,5 +91,3 @@
 </div>
 
 {% endblock %}
-
-

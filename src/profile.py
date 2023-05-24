@@ -79,20 +79,21 @@ def remove_stocks_preferences(username):
     # message = ""
     #  get current user from the database
     user = User.query.filter_by(username=username).first()
+    preferences = get_preferences(user)
 
     if request.method == 'POST':
         removed_stock = request.form.get('stocks')
         print('request', removed_stock)
         symbol = removed_stock.split('-')[0]
-        # name = removed_stock.split('-')[1]
 
         stock_id = Stock.query.filter_by(symbol=symbol).first().id
 
-        db.session.query(Stock).filter_by(symbol=symbol).delete()
-        db.session.query(stocks_preferences).filter_by(stock_id=stock_id).delete()
+
+        db.session.query(stocks_preferences).filter_by(stock_id=stock_id, preferences_id=preferences.id).delete()
         db.session.commit()
 
     return redirect('/..')
+
 
 @profile.route('/<username>/update_language', methods=['POST', 'GET'])
 @login_required
