@@ -20,8 +20,17 @@
       <p>Please select your stock:</p>
       {% for s in preferences.stocks %}
       <input type="radio" id="stock{{stock.id}}" name="stock" value="{{s.symbol}}" {% if s.symbol == stock %}checked=True{% endif %}>
-      <label for="stock1">{{ s.symbol }}</label><br> 
+      <label for="stock1">{{ s.symbol }} {% if s.symbol == stock %} <span class="fw-bolder">{{last_price}} USD</span>
+      {% if last_price > prev_last_price %}<i class="fas fa-long-arrow-alt-up"></i>
+      {% else %} <i class="fas fa-long-arrow-alt-down"></i>{% endif %}
+      {{price_change}} ({{percent}}%)
+      {% endif %}
+      </label><br>
       {% endfor %}
+
+
+
+
       <!-- <input type="radio" id="stock1" name="stock" value="TSLA">
       <label for="stock1">Tesla</label><br>
       <input type="radio" id="stock2" name="stock" value="AMZN">

@@ -63,24 +63,32 @@
                     <hr>
                     <ul>
                         {% for stock in preferred_stocks %}
-                        <li>{{ stock.symbol }}
-                            <div class="tooltip-css small">
-                                <a href="{{ url_for ('stocks_graph.render', stock=stock.symbol) }}" >
-                                    <span class="tooltiptext-css tp-text-left">Show graph</span>
-                                <span class="m-2"><i class="fas fa-chart-line link-button"></i></span>
-                                </a>
+                        <li>
+                            <div class="d-flex align-items-center">
+                            {{ stock.symbol }}
+                            <div class="tooltip-css">
+                            <a href="{{ url_for ('stocks_graph.render', stock=stock.symbol) }}" ><span class="tooltiptext-css">Show graph</span>
+                            <span class="m-2"><i class="fas fa-chart-line link-button"></i></span></a>
                             </div>
-                            <div class="tooltip-css small">
-                                <a href="{{ url_for ('stocks_news.get_news', stock=stock.symbol, username=username) }}">
-                                    <span class="tooltiptext-css tp-text-right">Show news</span>
-                                    <span class="m-2"><i class="fas fa-newspaper link-button"></i></span>
-                                </a>
+                            <div class="tooltip-css">
+                            <a href="{{ url_for ('stocks_news.get_news', stock=stock.symbol, username=username) }}"class="tooltip-css"><span class="tooltiptext-css">Show news</span><span class="m-2"><i class="fas fa-newspaper link-button"></i></span></a>
+                            </div>
+                            <form class="my-2" method="POST" action="{{ url_for('profile.remove_stocks_preferences', username=username) }}">
+                            <input type="hidden" name="stocks" value="{{ stock.symbol }}">
+                            <div class="tooltip-css">
+                            <button type="submit" class="tooltip-css" style="border: none; background: none; padding: 0;">
+                            <span class="tooltiptext-css">Remove</span>
+                            <span class="m-2"><i class="fas fa-trash"></i></span>
+                                </button>
+                              </div>
+                            </form>
                             </div>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -88,4 +96,3 @@
 {% endblock %}
 
 
-<!-- Image by <a href="https://pixabay.com/users/publicdomainpictures-14/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">PublicDomainPictures</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">Pixabay</a> -->

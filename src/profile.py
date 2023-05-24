@@ -2,7 +2,7 @@ from flask import (Blueprint,
                    render_template,
                    redirect,
                    request)
-from src.database import db, User, Preferences, Stock
+from src.database import db, User, Preferences, Stock, stocks_preferences
 from src.utils import load_languages, load_stocks, get_preferences
 from src.auth import login_required
 
@@ -59,7 +59,7 @@ def update_stocks_preferences(username):
         existing_stock = Stock.query.filter_by(symbol=symbol).first()
 
         if existing_stock is not None:
-            
+
             preferred_stock = existing_stock
         else:
             preferred_stock = Stock(symbol=symbol,
@@ -70,6 +70,28 @@ def update_stocks_preferences(username):
         db.session.add(preferences)
         db.session.commit()
     
+    return redirect('/..')
+
+
+@profile.route('/<username>/remove_stocks', methods=['POST', 'GET'])
+def remove_stocks_preferences(username):
+    """Remove stock preferences"""
+    # message = ""
+    #  get current user from the database
+    user = User.query.filter_by(username=username).first()
+
+    if request.method == 'POST':
+        removed_stock = request.form.get('stocks')
+        print('request', removed_stock)
+        symbol = removed_stock.split('-')[0]
+        # name = removed_stock.split('-')[1]
+
+        stock_id = Stock.query.filter_by(symbol=symbol).first().id
+
+        db.session.query(Stock).filter_by(symbol=symbol).delete()
+        db.session.query(stocks_preferences).filter_by(stock_id=stock_id).delete()
+        db.session.commit()
+
     return redirect('/..')
 
 @profile.route('/<username>/update_language', methods=['POST', 'GET'])

@@ -128,3 +128,20 @@ canvas {
 .tooltip-css:hover .tooltiptext-css{
     visibility: visible;
   }
+
+ .fa-trash {
+  color: #c38728;
+}
+
+.fa-trash:hover {
+  color: #ce2727;
+}
+
+.fa-long-arrow-alt-down {
+    color: #e85353;
+}
+
+
+.fa-long-arrow-alt-up {
+    color: #67e853;
+}
