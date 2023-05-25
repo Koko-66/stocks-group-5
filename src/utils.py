@@ -17,6 +17,13 @@ def load_stocks():
     return {"stocks": stock_data['stocks']}
 
 
+def load_resources():
+    with open('./src/static/data/resources.json') as resources:
+        resources = json.load(resources)
+
+    return {"resources": resources['resources']}
+
+
 def get_preferences(user):
     """
     Get user preferences
