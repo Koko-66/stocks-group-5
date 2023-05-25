@@ -1,0 +1,43 @@
+{
+    "resources": { 
+        "source": "https://www.nirmalbang.com/knowledge-center/stock-market-terminology.html",
+        "title": "25 Stock Market Terms That You Should Know",
+        "introduction": "Understanding the stock market can be seen as a challenging task. Some confusing terms and concepts will frustrate you, but being familiar with these terms will surely help you.These stock market terms will improve your stock market vocabulary and help you become a better and successful investor.So let us understand these 25 essential stock market terms that every investor should know.",
+        "terms" : {
+            "Annual Report": "An annual report is a yearly report that every company prepares to impress the shareholders of their company. The annual report consists of lots of information about a company, from cash flow to management strategy.Several people read the annual report to look at the company’s solvency and judge their financial position.",
+            "Arbitrage": "Arbitrage means purchasing something like foreign money from one place and selling it to another place where the price of the foreign money is higher than buying place.\nFor example: if stock is trading out $20 from one Market and $21 on other markets, the trader must buy shares at $20 from one Market and sell them for $21 on the different Market, getting the difference amount between both the markets price.",
+            "Averaging Down":
+            "Averaging down means the investor buys more stock when the price of a particular stock goes down. This decreases the average purchase price of your specific stock. Several investors use this strategy if they feel that consensus about a specific company is wrong, so they expect the stock price to jump back and earn profit.",
+            "Bear Market": "It is a market where investors talk about the stock market performing in a downward trend, or it is a certain period where the prices of multiple stocks are falling.",
+            "Broker": "A broker is a person who buys and sells investment on your behalf and, in exchange, takes a certain amount of money called commission or fee.", 
+            "Dividend": "A dividend means when the company earns profit, a particular portion of their earnings is distributed to shareholders or the people who own the company stock on a quarterly or annual basis. Not every company pays dividends, and if you’re after penny stocks, you’ll likely not get any dividends.",
+            "Sensex": "Sensex is a figure that indicates all the relative share prices that are listed on the Bombay Stock Exchange.", 
+            "Nifty": "The Nifty 50 Index, called the National Stock Exchange of India, is the primary and brad based stock market index for the equity market of India.\nThe Nifty 50 consists of 50 Indian company stocks in 12 different sectors, and it is one out of two stock indices that are mainly used in the stock market.",
+            "Quote": "The stock’s latest trading prices contain information that is given in a quote. Sometimes, the quote is delayed by 20 minutes unless you’re an actual stockbroker working in an existing trading platform.",
+            "Share Market": "A share market is a market in which shares of a particular company are purchased and sold. The stock market is a definite example of a share market.",
+            "Bull Market": "It is a market where investors talk about the stock market performing in an upward trend, or it is a certain period where the prices of multiple stocks are increasing.",
+            "Bid Price": "A bid price is nothing but the amount that you desire to pay for a particular share.",
+            "Ask Price": "Ask price is a specific price at which you are looking to sell a share.",
+            "Order": "Order means the purpose of buying and selling shares in a given range of price. For example, you have placed an order to buy 200 shares from company A, at a maximum price of Rs 50 per share.",
+            "Trading Volume": "Trading volume means the number of shares that are traded on a particular day.",
+            "Market Capitalisation": "It simply means the value of a company according to the stock market. That is the current value of all the shares of a company put together.",
+            "Intra-Day Trading": "Intraday trading means buying and selling your desired stocks on the same day so that before trading hours get over, all your trading positions will be closed within the same day.",
+            "Market Order": "A market order is an order to buy and sell shares at the market price. Several investors don’t go with this Order because the trade price in the market order remains volatile.",
+            "Day Order": "A day order is an order that remains good till the end of the trading day. If the Order does not perform by the time the market closes, the Order will be canceled.",
+            "Limit Order": "A limit order is to buy shares below a fixed price and sell shares above a fixed price. It is advisable to use a limit order to trade shares.",
+            "Portfolio": "The portfolio is a collection of all the investments that an investor has made right from purchasing a share for the first time.",
+            "Liquidity": "Liquidity means how stocks can be sold off quickly. Shares that get sold consist of high trade volumes quickly and are called highly liquid.",
+            "IPO": "IPO means a private company is turning into a public company by issuing its shares to the public for the first time. In the case of an IPO, the investor can buy the shares directly from the company.",
+            "Secondary Sharing": "It is another offering used to sell more stocks and gain more money from the public.",
+            "Going Long": "Betting on the price of a stock that will increase so that you can buy at a low price and sell at a high price."
+        },
+        "FAQS": {
+            "Q1": "What knowledge do I need to start investing in the stock market?",
+            "A1": "To start investing in the stock market, you must have a basic knowledge of the stock market and the terms of the stock market to make your trading better and more effective.",
+            "Q2": "Are stock market terms necessary to understand for beginners?",
+            "A2": "Yes, reading and understanding the stock market terms are essential because they will help them make a better trader in life.",
+            "Q3": "How does the stock market work?",
+            "A3": "The stock market works through several traders and investors who buy and sell stocks in a trading hour. The transaction starts typically when the buyers are sellers start trading their stocks. The rise and fall of stock prices depend entirely on the demand and supply of these stocks."
+        }
+    }
+}
