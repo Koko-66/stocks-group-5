@@ -21,7 +21,13 @@
 	<hr>
 	<div class="d-md-flex gap-2">
 		<div class="col-7">
-			<div>{{ resources["title"]}}</div>
+			<h2 class="smaller">{{ resources["title"]}}</h2>
+			<div>
+			{% for term, def in resources["terms"].items() %}
+				<p class="large fw-bold">{{ term }}</p>
+				<p class="large">{{ def }}</p>
+			{% endfor %}
+			</div>
 			<div class="media">
 			<video src="https://www.youtube.com/playlist?list=PLk9v2_m7w8Wgj0BLSYqPaVjGKz3_qhMTQ" class="object-fit-contain" autoplay="False"></video>
 		</div>
