@@ -30,10 +30,13 @@ def get_news(username, stock=None):
     if request.method == "GET":
         selected_language = preferences.news_language
 
-        # if news accessed from the menu show for first stock
-        # from the preferences
+        # Check is stock passed in request, if not check prefernces and select first
+        # if not make no selection, first from the list
         if stock is None:
-            selected_symbol = preferences.stocks[0].symbol
+            if preferences.stocks:
+                selected_symbol = preferences.stocks[0].symbol
+            else:
+                selected_symbol = stock_data['stocks'][1]
         # if accessed from the profile page for specific stock
         # take stock from request
         else:

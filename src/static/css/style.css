@@ -89,6 +89,7 @@ canvas {
     text-decoration: none;
     font-weight: bold;
     color:rgb(195, 136, 41);
+    background: none !important;
 }
 
 .link-button:hover {
