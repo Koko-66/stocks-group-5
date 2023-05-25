@@ -6,7 +6,7 @@ import os
 from flask import Blueprint, render_template, request, session
 from src.auth import login_required
 from src.database import User
-from src.utils import load_languages, load_stocks, load_resources, get_preferences
+from src.utils import load_languages, load_stocks, load_resources, load_videos, get_preferences
 
 # register the stocks_news blueprint
 stocks_news = Blueprint('stocks_news', __name__, url_prefix='/profile')
@@ -21,6 +21,7 @@ def get_news(username, stock=None):
     language_data = load_languages()
     stock_data = load_stocks()
     resources = load_resources()
+    videos = load_videos()
 
     stock = request.args.get('stock')
 
@@ -84,5 +85,6 @@ def get_news(username, stock=None):
                            preferences=preferences,
                            selected_language=selected_language,
                            selected_symbol=selected_symbol,
-                           resources = resources['resources'],
+                           resources=resources['resources'],
+                           videos=videos['videos']
                         )

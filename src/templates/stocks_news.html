@@ -19,6 +19,72 @@
 		</div>
 	</div>
 	<hr>
+
+	<div class="d-md-flex gap-2">
+		<!-- VIDEOS -->
+		<div class="col-md-6">
+			{% for title, video in videos.items() %}
+				<h2 class="smaller">{{ title }}</h2>
+				<div class="video">
+					<iframe class="embed-responsive-item" width="480" height="270" src="{{ video }}" frameborder="0" allowfullscreen></iframe>
+				</div>
+			{% endfor %}
+		</div>
+
+		<!-- STOCK NEWS -->
+		<div class="col-md-6">
+			<form class="my-2" method="POST">
+				<div class="d-flex gap-2">
+					<!-- Build selection box for the languages -->
+					<select name="language" class="form-select" aria-label="Default select example">
+						{% for code, language in languages.items() %}
+							{% if selected_language == code %}
+								<option value="{{ code }}" selected>{{ language }}</option>
+							{% else %}
+								<option value="{{ code }}">{{ language }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+					<!-- Build selection box for the stocks -->
+					<select name="stocks" class="form-select" aria-label="Default select example">
+						{% for stock in stocks %}
+							{% set symbol = stock['symbol'] %}
+							{% set name = stock['name'] %}
+							{% if selected_symbol == symbol %}
+								<option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
+							{% else %}
+								<option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+					<button class="btn btn-secondary" type="submit">Go</button>
+				</div>
+			</form>
+			<hr>
+			{% if articles != [] %}
+				{% for article in articles %}
+					<h2 class="smaller">{{ article.title }}</h2>
+					{% if article.image_url %}
+						<img class="img-flex article-img" src="{{ article.image_url }}" alt="{{ article.title }}" />
+					{% else %}
+						<p class="text-secondary">No image available</p>
+					{% endif %}
+					<p class="small"><span>source: {{ article.source }} |</span>
+					<span>{{ article.published_at[:10] }}</span></p>
+					<p class="fw-medium">{{ article.snippet }}</p>
+					<a href="{{ article.url }}">Read more...</a>
+					<br />
+					<p>{{ article.content }}</p>
+					<hr />
+				{% endfor %}
+			{% else %}
+				<h4>We're sorry, there are no articles available for this combination. Try again.</h4>
+			{% endif %}
+		</div>
+	</div>
+
+	<hr>
+	<!-- RESOURCES -->
 	<div class="d-md-flex gap-2">
 		<div class="col-7">
 			<h2 class="smaller">{{ resources["title"]}}</h2>
@@ -28,65 +94,22 @@
 				<p class="large">{{ def }}</p>
 			{% endfor %}
 			</div>
-			<div class="media">
-			<video src="https://www.youtube.com/playlist?list=PLk9v2_m7w8Wgj0BLSYqPaVjGKz3_qhMTQ" class="object-fit-contain" autoplay="False"></video>
-		</div>
+			<h2 class="smaller">FAQs</h2>
+			<div>
+			{% for qs, ans in resources["FAQS"].items() %}
+				<p class="large fw-bold">{{ qs }}</p>
+				<p class="large">{{ ans }}</p>
+			{% endfor %}
+			</div>
+
 		<div>
-			
+
 		</div>
 <!-- <video src="..." class="object-fit-cover" autoplay></video>
 <video src="..." class="object-fit-fill" autoplay></video>
 <video src="..." class="object-fit-scale" autoplay></video>
 <video src="..." class="object-fit-none" autoplay></video> -->
 			<div></div>
-		</div>
-		<div col="col-5">
-			<form class="my-2" method="POST">
-				<div class="d-flex gap-2">
-					<!-- Build selection box for the languages -->
-					<select name="language" class="form-select" aria-label="Default select example">
-						{% for code, language in languages.items() %} {% if selected_language ==
-						code %}
-						<option value="{{ code }}" selected>{{ language }}</option>
-						{% else %}
-						<option value="{{ code }}">{{ language }}</option>
-						{% endif %} {% endfor %}
-					</select>
-					<!-- Build selection box for the stocks -->
-					<select name="stocks" class="form-select" aria-label="Default select example">
-						{% for stock in stocks %}
-							{% set symbol = stock['symbol'] %} {% set name
-							= stock['name'] %} {% if selected_symbol == symbol %}
-							<option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
-							{% else %}
-							<option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
-							{% endif %} 
-						{% endfor %}
-					</select>
-					<button class="btn btn-secondary" type="submit">Go</button>
-				</div>
-			</form>
-			<hr>
-			{% if articles != [] %} 	
-				{% for article in articles %}
-					<h2 class="smaller">{{ article.title }}</h2>
-					{% if article.image_url %}
-					<img class="img-flex article-img" src="{{ article.image_url }}" alt="{{article.title}}" />
-					{% else %}
-					<p class="text-secondary">No image available</p>
-					{% endif %}
-				<!-- <p>Description: {{ article.description}}</p> -->
-				<p class="small"><span>source: {{ article.source }} |</span>
-				<span>{{ article.published_at[:10] }}</span></p>
-				<p class="fw-medium">{{ article.snippet }}</p>
-				<a href="{{ article.url }}">Read more...</a>
-				<br />
-				<p>{{ article.content }}</p>
-			<hr />
-				{% endfor %} 
-			{% else %}
-			<h4>We're sorry, there are no articles available for this combination. Try again.</h4>
-			{% endif %}
 		</div>
 	</div>
 

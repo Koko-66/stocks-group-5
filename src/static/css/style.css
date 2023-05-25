@@ -149,7 +149,17 @@ canvas {
     color: #e85353;
 }
 
-
 .fa-long-arrow-alt-up {
     color: #67e853;
+}
+
+div.videos {
+  text-align: left;
+  padding: 10px;
+  margin: 20px;
+}
+.video {
+  width: 100%;
+  height: auto;
+  margin-bottom: 25px;
 }
