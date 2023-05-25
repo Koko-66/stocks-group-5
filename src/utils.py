@@ -23,6 +23,12 @@ def load_resources():
 
     return {"resources": resources['resources']}
 
+def load_videos():
+    with open('./src/static/data/videos.json') as videos:
+        videos = json.load(videos)
+
+    return {"videos": videos['video']}
+
 
 def get_preferences(user):
     """
