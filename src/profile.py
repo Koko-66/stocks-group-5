@@ -43,7 +43,6 @@ def manage_profile(username):
 @login_required
 def update_stocks_preferences(username):
     """Update stock preferences"""
-    # message = ""
     #  get current user from the database
     user = User.query.filter_by(username=username).first()
     # get user preferences from the database
@@ -76,7 +75,6 @@ def update_stocks_preferences(username):
 @profile.route('/<username>/remove_stocks', methods=['POST', 'GET'])
 def remove_stocks_preferences(username):
     """Remove stock preferences"""
-    # message = ""
     #  get current user from the database
     user = User.query.filter_by(username=username).first()
     preferences = get_preferences(user)
