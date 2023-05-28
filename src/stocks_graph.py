@@ -1,7 +1,6 @@
 """Routes for the stocks graph page."""
 import json
 from datetime import date, timedelta
-# import pandas as pd
 import yfinance as yf
 from flask import Blueprint, request, render_template,session
 from src.auth import login_required

@@ -77,7 +77,7 @@ def get_news(username, stock=None):
     conn.close()
 
     return render_template('stocks_news.html',
-                           stock = stock,
+                           stock=stock,
                            articles=articles,
                            languages=language_data['languages'],
                            stocks=stock_data['stocks'],
