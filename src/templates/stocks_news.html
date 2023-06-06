@@ -9,56 +9,105 @@
 <!-- main content -->
 {% block content %}
 <div class="bg-light w-100 p-4 rounded-3">
-	<h1>News</h1>
-	<hr>
-	<!-- <h2>Select your preferences</h2> -->
-	<!-- {#{ news_data }#} -->
-	<form class="my-2" method="POST" action="{{ url_for('profile.get_news', username=username) }}">
-		<div class="d-flex gap-2">
-			
-			<!-- <label for="language">Language</label> -->
-			<select name="language" class="form-select" aria-label="Default select example">
-				{% for code, language in languages.items() %} {% if selected_language ==
-				code %}
-				<option value="{{ code }}" selected>{{ language }}</option>
-				{% else %}
-				<option value="{{ code }}">{{ language }}</option>
-				{% endif %} {% endfor %}
-			</select>
-			<label for="Stocks"></label>
-			<select name="stocks" class="form-select" aria-label="Default select example">
-				{% for stock in stocks %} {% set symbol = stock['symbol'] %} {% set name
-				= stock['name'] %} {% if selected_symbol == symbol %}
-				<option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
-				{% else %}
-				<option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
-				{% endif %} {% endfor %}
-			</select>
-			<button class="btn btn-secondary" type="submit">Go</button>
+	<div class="row  align-items-center">
+		<div class="col"><h1>Resources</h1></div>
+		<div class="col text-end small">
+			<a href="{{ url_for('profile.manage_profile', username=username) }}" class="link-button tooltip-css">
+				<i class="fas fa-user-alt profile-btn"></i>
+					<span class="tooltiptext-css tp-text-left small">Back to Profile</span>
+			</a>
 		</div>
-	</form>
+	</div>
 	<hr>
-	{% if username %}<p> this is the template with the username {{ username }} </p>{% endif %}
-	{% if articles != [] %} 
-		{% for article in articles %}
-			<h3>{{ article.title }}</h3>
-			{% if article.image_url %}
-			<img class="img-flex article-img" src="{{ article.image_url }}" alt="{{article.title}}" />
+
+	<div class="d-md-flex gap-2">
+		<!-- VIDEOS -->
+		<div class="col-md-6">
+			{% for title, video in videos.items() %}
+				<h2 class="smaller">{{ title }}</h2>
+				<div class="video">
+					<iframe class="embed-responsive-item" width="480" height="270" src="{{ video }}" frameborder="0" allowfullscreen></iframe>
+				</div>
+			{% endfor %}
+		</div>
+
+		<!-- STOCK NEWS -->
+		<div class="col-md-6">
+			<form class="my-2" method="POST">
+				<div class="d-flex gap-2">
+					<!-- Build selection box for the languages -->
+					<select name="language" class="form-select" aria-label="Default select example">
+						{% for code, language in languages.items() %}
+							{% if selected_language == code %}
+								<option value="{{ code }}" selected>{{ language }}</option>
+							{% else %}
+								<option value="{{ code }}">{{ language }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+					<!-- Build selection box for the stocks -->
+					<select name="stocks" class="form-select" aria-label="Default select example">
+						{% for stock in stocks %}
+							{% set symbol = stock['symbol'] %}
+							{% set name = stock['name'] %}
+							{% if selected_symbol == symbol %}
+								<option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
+							{% else %}
+								<option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+					<button class="btn btn-secondary" type="submit">Go</button>
+				</div>
+			</form>
+			<hr>
+			{% if articles != [] %}
+				{% for article in articles %}
+					<h2 class="smaller">{{ article.title }}</h2>
+					{% if article.image_url %}
+						<img class="img-flex article-img" src="{{ article.image_url }}" alt="{{ article.title }}" />
+					{% else %}
+						<p class="text-secondary">No image available</p>
+					{% endif %}
+					<p class="small"><span>source: {{ article.source }} |</span>
+					<span>{{ article.published_at[:10] }}</span></p>
+					<p class="fw-medium">{{ article.snippet }}</p>
+					<a href="{{ article.url }}">Read more...</a>
+					<br />
+					<p>{{ article.content }}</p>
+					<hr />
+				{% endfor %}
 			{% else %}
-			<p class="text-secondary">No image available</p>
+				<h4>We're sorry, there are no articles available for this combination. Try again.</h4>
 			{% endif %}
-		<!-- <p>Description: {{ article.description}}</p> -->
-		<p class="small"><span>source: {{ article.source }} |</span>
-		<span>{{ article.published_at[:10] }}</span></p>
-		<h5 class="fw-medium">{{ article.snippet }}</h5>
-		<a href="{{ article.url }}">Read more...</a>
-		<br />
-		<!-- <p>{{ article.published_at }}</p> -->
-		<p>{{ article.content }}</p>
-		<hr />
-		{% endfor %} 
-	{% else %}
-	<h4>We're sorry, there are no articles available for this combination. Try again.</h4>
-	{% endif %}
+		</div>
+	</div>
+
+	<hr>
+	<!-- RESOURCES -->
+	<div class="d-md-flex gap-2">
+		<div class="col-7">
+			<h2 class="smaller">{{ resources["title"]}}</h2>
+			<div>
+			{% for term, def in resources["terms"].items() %}
+				<p class="large fw-bold">{{ term }}</p>
+				<p class="large">{{ def }}</p>
+			{% endfor %}
+			</div>
+			<h2 class="smaller">FAQs</h2>
+			<div>
+			{% for qs, ans in resources["FAQS"].items() %}
+				<p class="large fw-bold">{{ qs }}</p>
+				<p class="large">{{ ans }}</p>
+			{% endfor %}
+			</div>
+
+		<div>
+
+		</div>
+			<div></div>
+		</div>
+	</div>
+
 </div>
 {% endblock %}

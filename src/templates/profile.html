@@ -3,46 +3,37 @@
 
 {% block navbar %} {% include 'includes/navbar_auth.html' %} {% endblock %}
 {% block content %}
-<div class="bg-light rounded-3">
-    <div class="d-block text-center m-5 p-3">
-        <div>
-        <h1>Your profile</h1>
-        <div class="row">
-            Logged in as: {{ user.username }}<strong> | <a href="{{ url_for('auth.login') }}"> Logout</a>
+<div class="bg-light w-100 p-4 rounded-3">
+    <div class="row  align-items-center">
+        <div class="col">
+            <h1>Your profile</h1>
         </div>
-        <br><br>
-        <div class="row">
-            <h2>Welcome to the user profile page...</h2>
-        </div>
+        <div class="col text-end">Logged in user: <span class="text-uppercase link-button text-small">{{ username
+                }}</span></div>
     </div>
-    </div>
-        <div class="d-flex text-align-left m-2 p-3">
-            <form class="my-2" method="POST" action="{{ url_for('profile.get_news', username=username) }}">
-                <div class="row gap-2">
-                <div class="col">
-                    <label for="Stocks">Your stocks</label>
+    <hr>
+    <div class="d-flex text-align-left m-2 p-3">
+        <div class="row gap-2">
+            <div class="col">
+                <form class="my-2" method="POST"
+                    action="{{ url_for('profile.update_stocks_preferences', username=username) }}">
+                    <label for="Stocks">Available stocks</label>
                     <select name="stocks" class="form-select" aria-label="Default select example">
                         {% for stock in stocks %} {% set symbol = stock['symbol'] %} {% set name
                         = stock['name'] %} {% if selected_symbol == symbol %}
-                        <option value="{{ symbol }}" selected>{{ symbol }} - {{ name }}</option>
+                        <option value="{{ symbol }}-{{ name }}" selected>{{ symbol }} - {{ name }}</option>
                         {% else %}
-                        <option value="{{ symbol }}">{{ symbol }} - {{ name }}</option>
+                        <option value="{{ symbol }}-{{ name }}">{{ symbol }} - {{ name }}</option>
                         {% endif %} {% endfor %}
                     </select>
                     <div class="d-flex justify-content-end">
-                    <button class="btn btn-secondary m-2" type="submit">Add</button></div>
-                    <div>Your stocks</div>
-                    <hr>
-                    <ul>
-                    {#% for stock in preferred_stocks %#}
-                        <li>Google</li>
-                        <li>Tesla</li>
-                        <li>{{ stock }}</li>
-                    
-                    {#% endfor %#}
-                    </ul>
-                </div>
-                <div class="col"> 
+                        <button class="btn btn-secondary m-2" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <form class="my-2" method="POST"
+                    action="{{ url_for('profile.update_language_preferences', username=username) }}">
                     <label for="language">Your preferred language</label>
                     <select name="language" class="form-select" aria-label="Default select example">
                         {% for code, language in languages.items() %} {% if preferred_language ==
@@ -53,22 +44,50 @@
                         {% endif %} {% endfor %}
                     </select>
                     <div class="d-flex justify-content-end">
-                    <button class="btn btn-secondary m-2" type="submit">Update</button></div>
+                        <button class="btn btn-secondary m-2" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+            <div class="d-flex gap-3 align-items-end">
+                <div class="col">
+                    <div>Your stocks</div>
+                    <hr>
+                    <ul>
+                        {% for stock in preferred_stocks %}
+                        <li>
+                            <div class="d-flex align-items-center">
+                                {{ stock.symbol }}
+                                <div class="tooltip-css small">
+                                    <a href="{{ url_for ('stocks_graph.render', stock=stock.symbol) }}"><span
+                                            class="tooltiptext-css tp-text-left">Show
+                                            graph</span>
+                                        <span class="m-2"><i class="fas fa-chart-line link-button"></i></span></a>
+                                </div>
+                                <div class="tooltip-css">
+                                    <a href="{{ url_for ('stocks_news.get_news', stock=stock.symbol, username=username) }}"
+                                        class="tooltip-css small"><span class="tooltiptext-css tp-text-right ">Show
+                                            news</span><span class="m-2"><i
+                                                class="fas fa-newspaper link-button"></i></span></a>
+                                </div>
+                                <div class="tooltip-css small">
+                                    <form method="POST"
+                                        action="{{ url_for('profile.remove_stocks_preferences', username=username) }}">
+                                        <input type="hidden" name="stocks" value="{{ stock.symbol }}">
+                                            <button type="submit" class="tooltip-css tp-text-right border-0 m-0 p-0 link-button">
+                                                <span class="tooltiptext-css tp-text-right fw-light">Remove</span>
+                                                <span class=><i class="fas fa-trash link-button"></i></span>
+                                            </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                <!-- <div class="align-content-end"><button class="btn btn-secondary" type="submit">Go</button></div> -->
-                    
-            </form>
-            <!-- <div class=""><h6>Your preferred language</h6>
-                <p>{% if language %}
-                    {{ language }}
-                    {% else %}
-                    {{ message }}
-                    {% endif %}</p> -->
             </div>
 
-            <div class="col"> </div>
         </div>
+    </div>
 </div>
-{% endblock %}
 
-<!-- Image by <a href="https://pixabay.com/users/publicdomainpictures-14/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">PublicDomainPictures</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163509">Pixabay</a> -->
+{% endblock %}

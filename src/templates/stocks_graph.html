@@ -2,18 +2,42 @@
 {% block navbar %} {% include 'includes/navbar_auth.html' %} {% endblock %}
 {% block content %}
 <!-- <div class="full-window"> -->
-  <div class="d-block bg-light text-center rounded-3 my-5 p-3">
-    <h1>Stock details</h1>
+  <!-- <div class="d-block bg-light text-center rounded-3 my-5 p-3"> -->
+    <!-- <h1>Stock details</h1> -->
+    <div class="bg-light w-100 p-4 rounded-3">
+      <div class="row  align-items-center">
+        <div class="col"><h1>Stock details</h1></div>
+        <div class="col text-end small">
+          <a href="{{ url_for('profile.manage_profile', username=username) }}" class="link-button tooltip-css">
+            <i class="fas fa-user-alt profile-btn"></i>
+              <span class="tooltiptext-css tp-text-left small">Back to Profile</span>
+          </a>
+        </div>
+      </div>
+      <hr>
   <div class="stock-graph-select">
     <form action="/stocks_graph/">
       <p>Please select your stock:</p>
-      <input type="radio" id="stock1" name="stock" value="TSLA">
+      {% for s in preferences.stocks %}
+      <input type="radio" id="stock{{stock.id}}" name="stock" value="{{s.symbol}}" {% if s.symbol == stock %}checked=True{% endif %}>
+      <label for="stock1">{{ s.symbol }} {% if s.symbol == stock %} <span class="fw-bolder">{{last_price}} USD</span>
+      {% if last_price > prev_last_price %}<i class="fas fa-long-arrow-alt-up"></i>
+      {% else %} <i class="fas fa-long-arrow-alt-down"></i>{% endif %}
+      {{price_change}} ({{percent}}%)
+      {% endif %}
+      </label><br>
+      {% endfor %}
+
+
+
+
+      <!-- <input type="radio" id="stock1" name="stock" value="TSLA">
       <label for="stock1">Tesla</label><br>
       <input type="radio" id="stock2" name="stock" value="AMZN">
       <label for="stock2">Amazon</label><br>
       <input type="radio" id="stock3" name="stock" value="GOOG">
       <label for="stock3">Google</label><br><br>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit"> -->
     </form>
 
   </div>
