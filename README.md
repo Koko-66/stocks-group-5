@@ -1,5 +1,7 @@
 # stocks-group-5
 
+## [Video Walkthrough](https://youtu.be/AT2OVzFnq6M)
+
 ## Pre-requisites
 
 If you can install pipenv, its better but you can skip this step if you want. 
